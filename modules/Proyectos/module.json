@@ -1,0 +1,15 @@
+{
+    "name": "Proyectos",
+    "alias": "proyectos",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Proyectos\\Providers\\ProyectosServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
