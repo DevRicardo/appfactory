@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Modules\Autentication\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +21,7 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('login');
+                return redirect()->guest('autentication/login');
             }
         }
 

@@ -32,11 +32,11 @@ trait ResetsPasswords
             return view($this->linkRequestView);
         }
 
-        if (view()->exists('auth.passwords.email')) {
-            return view('auth.passwords.email');
+        if (view()->exists('autentication::passwords.email')) {
+            return view('autentication::passwords.email');
         }
 
-        return view('auth.password');
+        return view('autentication::password');
     }
 
     /**
@@ -143,11 +143,11 @@ trait ResetsPasswords
             return view($this->resetView)->with(compact('token', 'email'));
         }
 
-        if (view()->exists('auth.passwords.reset')) {
-            return view('auth.passwords.reset')->with(compact('token', 'email'));
+        if (view()->exists('autentication::passwords.reset')) {
+            return view('autentication::passwords.reset')->with(compact('token', 'email'));
         }
 
-        return view('auth.reset')->with(compact('token', 'email'));
+        return view('autentication::reset')->with(compact('token', 'email'));
     }
 
     /**

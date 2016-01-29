@@ -23,17 +23,12 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-
-      
+    {      
         
-        $salida = shell_exec('ls ../vendor');
-        
-        return  "<pre>$salida</pre>";
-        //return view("home");
-
+        /*$salida = shell_exec('php ../artisan module:make Automatico');
+        $salida .= shell_exec("chmod 777 -R ../modules/Automatico/");
+        return  "<pre>$salida</pre>";*/
+        return view("home");
         
     }
 }
-
-

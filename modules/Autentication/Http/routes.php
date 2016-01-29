@@ -3,7 +3,7 @@
 Route::group(['middleware' => 'web', 'prefix' => 'autentication', 'namespace' => 'Modules\Autentication\Http\Controllers'], function()
 {
     // Authentication Routes...
-        Route::get('login', 'AutenticationController@showLoginForm');
+        Route::get('login', 'AutenticationController@showLoginForm')->middleware(['notguest']);
         Route::post('login', 'AutenticationController@login');
         Route::get('logout', 'AutenticationController@logout');
 
