@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Modules\Autentication\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Pingpong\Modules\Routing\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
