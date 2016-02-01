@@ -1,5 +1,5 @@
 {
-	"name": "pingpong-modules/proyectos",
+	"name": "pingpong-modules/projects",
 	"description": "",
 	"authors": [
 		{
@@ -9,7 +9,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"Modules\\Proyectos\\": ""
+			"Modules\\Projects\\": ""
 		}
 	}
 }

@@ -35,8 +35,18 @@
   <nav class="teal accent-4">
     <div class="nav-wrapper">
       <a href="#!" class="brand-logo">EP-001</a>
+     
+      <form id="f_search" style="display: none;">
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Buscar proyecto" required>
+          <label id="l_search" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons i_search">close</i>
+        </div>
+      </form>
+
       <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right hide-on-med-and-down menu-large">
+        @yield('search')        
         <li><a href="{!! url('') !!}">Register</a></li>
         <li><a href="{!! url('') !!}">Contact</a></li>
         <li><a class="dropdown-button" href="#!" data-activates="menu_personal">
@@ -55,7 +65,21 @@
             {{ Auth::user()->name }}
         </div>
       </li>
+
+
       <li class="divider"></li> 
+
+        <li>
+        
+            <form id="mf_search">
+              <div class="input-field">
+                <input id="search" type="search" placeholder="Buscar proyecto" required>
+                <label id="ml_search" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons mi_search">close</i>
+              </div>
+            </form>      
+
+        </li>
         <li><a href="{!! url('') !!}">Register</a></li>
         <li><a href="{!! url('') !!}">Contact</a></li>
         <li>
@@ -75,27 +99,7 @@
     </div>
   </nav>
 
-  
- <!-- <nav>
-    <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">Logo</a>
-      
-      <ul class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
-      <ul class="side-nav" id="slide-out">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
-      </ul>
-      <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>-->
-
+ 
     <div class="container">
         <!-- Page Content goes here -->
        
@@ -108,6 +112,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
+    {!! Html::script("js/base.js") !!}
     </div>
 </body>
 

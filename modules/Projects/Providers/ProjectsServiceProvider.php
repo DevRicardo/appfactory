@@ -1,8 +1,8 @@
-<?php namespace Modules\Proyectos\Providers;
+<?php namespace Modules\Projects\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ProyectosServiceProvider extends ServiceProvider {
+class ProjectsServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -41,10 +41,10 @@ class ProyectosServiceProvider extends ServiceProvider {
 	protected function registerConfig()
 	{
 		$this->publishes([
-		    __DIR__.'/../Config/config.php' => config_path('proyectos.php'),
+		    __DIR__.'/../Config/config.php' => config_path('projects.php'),
 		]);
 		$this->mergeConfigFrom(
-		    __DIR__.'/../Config/config.php', 'proyectos'
+		    __DIR__.'/../Config/config.php', 'projects'
 		);
 	}
 
@@ -55,7 +55,7 @@ class ProyectosServiceProvider extends ServiceProvider {
 	 */
 	public function registerViews()
 	{
-		$viewPath = base_path('resources/views/modules/proyectos');
+		$viewPath = base_path('resources/views/modules/projects');
 
 		$sourcePath = __DIR__.'/../Resources/views';
 
@@ -64,8 +64,8 @@ class ProyectosServiceProvider extends ServiceProvider {
 		]);
 
 		$this->loadViewsFrom(array_merge(array_map(function ($path) {
-			return $path . '/modules/proyectos';
-		}, \Config::get('view.paths')), [$sourcePath]), 'proyectos');
+			return $path . '/modules/projects';
+		}, \Config::get('view.paths')), [$sourcePath]), 'projects');
 	}
 
 	/**
@@ -75,12 +75,12 @@ class ProyectosServiceProvider extends ServiceProvider {
 	 */
 	public function registerTranslations()
 	{
-		$langPath = base_path('resources/lang/modules/proyectos');
+		$langPath = base_path('resources/lang/modules/projects');
 
 		if (is_dir($langPath)) {
-			$this->loadTranslationsFrom($langPath, 'proyectos');
+			$this->loadTranslationsFrom($langPath, 'projects');
 		} else {
-			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'proyectos');
+			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'projects');
 		}
 	}
 

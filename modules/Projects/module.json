@@ -1,12 +1,12 @@
 {
-    "name": "Proyectos",
-    "alias": "proyectos",
+    "name": "Projects",
+    "alias": "projects",
     "description": "",
     "keywords": [],
     "active": 1,
     "order": 0,
     "providers": [
-        "Modules\\Proyectos\\Providers\\ProyectosServiceProvider"
+        "Modules\\Projects\\Providers\\ProjectsServiceProvider"
     ],
     "aliases":{},
     "files": [
