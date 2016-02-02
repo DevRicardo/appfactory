@@ -25,3 +25,13 @@ Aplicacion web escrita en php con le framework Laravel 5.2, que facilita la crea
 # COMBINAR CAMBIOS ENTRE RAMAS
   git merge master  
 
+
+
+
+/*****************************************************
+*                                                    *   
+*      COMANDOS MIGATIONS MODULES                    *
+*                                                    *
+******************************************************/
+
+# php artisan module:make-migration create_users_table blog

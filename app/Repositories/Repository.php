@@ -95,7 +95,7 @@ abstract class Repository implements RepositoryInterface
      * @return mixed
      */
     public function updateRich(array $data, $id) {
-        if (!($model = $this->model->find($id))) {
+        if (!($model = $this->model->findOrFail($id))) {
             return false;
         }
 
@@ -117,7 +117,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function find($id, $columns = array('*')) {
         
-        return $this->model->find($id, $columns);
+        return $this->model->findOrFail($id, $columns);
     }
 
     /**

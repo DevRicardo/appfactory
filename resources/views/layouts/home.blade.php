@@ -61,7 +61,7 @@
       <ul class="side-nav" id="mobile-demo">
          <li>        
         <div class="chip">
-            <img src="http://ofertas.rogersoto.com/images/avatar.png" alt="Contact Person">
+            <img title="{{ Auth::user()->name }}" src="http://ofertas.rogersoto.com/images/avatar.png" alt="{{ Auth::user()->name }}">
             {{ Auth::user()->name }}
         </div>
       </li>
@@ -74,7 +74,7 @@
             <form id="mf_search">
               <div class="input-field">
                 <input id="search" type="search" placeholder="Buscar proyecto" required>
-                <label id="ml_search" for="search"><i class="material-icons">search</i></label>
+                <label id="ml_search" for="search"><i class="material-icons ">search</i></label>
                 <i class="material-icons mi_search">close</i>
               </div>
             </form>      

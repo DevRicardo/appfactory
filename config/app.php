@@ -152,6 +152,7 @@ return [
         Pingpong\Modules\ModulesServiceProvider::class,
         Pingpong\Generators\GeneratorsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -211,6 +212,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Module'    => Pingpong\Modules\Facades\Module::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
