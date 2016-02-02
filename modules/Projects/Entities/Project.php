@@ -16,6 +16,18 @@ class Project extends Model {
 
     ];
 
+    
+
+    public function categorie()
+    {
+    	return $this->belongsTo('Modules\Projects\Entities\Categorie');
+    }
+
+    public function states()
+    {
+    	return $this->belongsToMany('Modules\Projects\Entities\State')->withPivot('state_start', 'state_end');
+    }
+
 
 
 

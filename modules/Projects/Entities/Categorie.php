@@ -6,4 +6,13 @@ class Categorie extends Model {
 
     protected $fillable = [];
 
+
+
+
+
+    public function projects()
+    {    	
+    	return $this->hasOne('Modules\Projects\Entities\Project');
+    }
+
 }

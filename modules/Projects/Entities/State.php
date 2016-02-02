@@ -6,4 +6,13 @@ class State extends Model {
 
     protected $fillable = [];
 
+
+
+
+
+    public function projects()
+    {
+    	return $this->belongsToMany('Modules\Projects\Entities\Project')
+    }
+
 }
