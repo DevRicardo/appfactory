@@ -46,12 +46,12 @@
 
       <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down menu-large">
-        @yield('search')        
+        <li>@yield('search')</li>        
         <li><a href="{!! url('') !!}">Register</a></li>
         <li><a href="{!! url('') !!}">Contact</a></li>
         <li><a class="dropdown-button" href="#!" data-activates="menu_personal">
         
-        <div class="chip">
+        <div class="chip z-depth-1">
             <img src="http://ofertas.rogersoto.com/images/avatar.png" alt="Contact Person">
             {{ Auth::user()->name }}
         </div>
@@ -60,7 +60,7 @@
       </ul>
       <ul class="side-nav" id="mobile-demo">
          <li>        
-        <div class="chip">
+        <div class="chip z-depth-1">
             <img title="{{ Auth::user()->name }}" src="http://ofertas.rogersoto.com/images/avatar.png" alt="{{ Auth::user()->name }}">
             {{ Auth::user()->name }}
         </div>
@@ -102,6 +102,18 @@
  
     <div class="container">
         <!-- Page Content goes here -->
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">apps
+</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a href="{!! url('projects/create') !!}" class="btn-floating blue"><i class="material-icons">add</i></a></li>
+    </ul>
+  </div>
        
 
     @yield('content')    
@@ -113,6 +125,15 @@
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
     {!! Html::script("js/base.js") !!}
+    <script type="text/javascript">
+    
+        $(document).ready(function() {
+            $('select').material_select();
+        });
+
+    </script>
+
+    @yield('scripts')
     </div>
 </body>
 

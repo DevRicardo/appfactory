@@ -13,7 +13,7 @@ interface RepositoryInterface {
 	
 	public function create(array $data);
 
-	public function save(array $data):
+	public function save(array $data);
 	public function saveModel(array $data);
 
 	public function update(array $data, $id, $atribute = "id");

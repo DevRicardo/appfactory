@@ -6,10 +6,12 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container as App;
+use App\Interfaces\RepositoryInterface;
+
 /**
 * 
 */
-abstract class Repository implements RepositoryInterface
+abstract class Repository
 {
 
 	/**
@@ -34,7 +36,7 @@ abstract class Repository implements RepositoryInterface
 	 * contiene el modelo especificado para realizar las operaciones
      * @param none 
      */
-	abstract function model();
+	public abstract function model();
 
 
 	/**
