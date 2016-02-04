@@ -10,6 +10,8 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {!! Html::style("css/materialize.css") !!}
+    {!! Html::style("bower_components/animate.css/animate.css") !!}
+
     <!-- Styles -->
     
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
@@ -122,17 +124,29 @@
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    {!! Html::script("bower_components/underscore/underscore.js") !!}
+    {!! Html::script("bower_components/is_js/is.js") !!}
+    {!! Html::script("bower_components/moment/moment.js") !!}    
+    {!! Html::script("bower_components/noty/js/noty/jquery.noty.js") !!}
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
+    <!--- Ayudantes js (Funciones genericas para la interacion con javascript)  -->
+    {!! Html::script("js/lib/HelperForm.js") !!}
+    {!! Html::script("js/lib/HelperValidation.js") !!}
+    {!! Html::script("js/lib/HelperForm.js") !!}
+
     {!! Html::script("js/base.js") !!}
+
+
     <script type="text/javascript">
     
         $(document).ready(function() {
             $('select').material_select();
         });
 
-    </script>
 
+    </script>
+    <!--  Escripts añadodos por cada vista  -->
     @yield('scripts')
     </div>
 </body>

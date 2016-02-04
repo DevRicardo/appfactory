@@ -5,7 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model {
 
 
-
+    /*
+    * Array con los campos que se pueden guardar de forma 
+    * masiba
+    */
     protected $fillable = [
     
         'image',
@@ -14,6 +17,16 @@ class Project extends Model {
         'user_id',
         'categorie_id'
 
+    ];
+
+    /*
+    * 
+    */
+    public static $rules = [
+        "amb_placa" => "required|max:20",
+        "amb_modelo" => "required|max:100",
+        "amb_tarjetapropiedad" => "required|max:100",
+        "amb_modalidad" => "required|in:TERRESTRE,AÉREA"
     ];
 
     
