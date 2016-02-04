@@ -3,6 +3,7 @@
 use Pingpong\Modules\Routing\Controller;
 use Modules\Projects\Repositories\ProjectRepository;
 use Illuminate\Support\Facades\Request;
+use App\Tools\Messages;
 
 class ProjectsController extends Controller {
 
@@ -33,7 +34,14 @@ class ProjectsController extends Controller {
 	}
 
 
-	public function save(Request $request, $id)
+	public function store(Request $request)
+	{
+
+	}
+
+
+
+	public function update(Request $request, $id)
 	{
 
 	}

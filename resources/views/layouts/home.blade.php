@@ -18,7 +18,7 @@
 
 </head>
 <body>
-
+ <body data-url="{{URL::to('/')}}">
  <ul id="menu_personal" class="dropdown-content">
      
      <li>
@@ -134,6 +134,7 @@
     {!! Html::script("js/lib/HelperForm.js") !!}
     {!! Html::script("js/lib/HelperValidation.js") !!}
     {!! Html::script("js/lib/HelperForm.js") !!}
+    {!! Html::script("js/lib/HelperServerPetition.js") !!}
 
     {!! Html::script("js/base.js") !!}
 

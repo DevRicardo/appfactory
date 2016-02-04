@@ -30,19 +30,17 @@
     <br>
     
   <div class="row">
-    <form class="col s12 card-panel z-depth-1 grey lighten-3">
-    {!! Form::open() !!}
+    
+    {!! Form::open(['url'=>'projects', 'method'=>'POST', 'class' => 'create']) !!}
     <blockquote>
       <h5>Create new proyect</h5>
     </blockquote>
 
     @include('projects::fields')
-
-      
-    </form>
+   
 
     <div class="input-field col s6">
-        <input type="button" class="btn waves-effect waves-light blue lighten-1" value="Create" />
+        <input type="submit" class="btn waves-effect waves-light blue lighten-1" value="Create" />
     </div>
     {!! Form::close() !!}
   </div>

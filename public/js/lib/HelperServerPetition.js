@@ -8,20 +8,39 @@
 * resibir el objeto del formulario y estraer de el los datos para enviar
 * la peticion
 */
+
+var baseUrl =  function () {
+        return $('body').attr('data-url');
+    }
+
 var HelperServerPetition = function () {
 	// body...
+
+	//url base del proyecto
 	
-    // evia datos al servidor mediante ajax
+	
+    // envia datos al servidor mediante ajax
+    /*
+    * formato del config = {url: , type:, async: , data: , dataType: ,success: , error:}
+    * Para configurar la url antempoga siempre baseUrl()+'/'+<< ruta >> 
+    */
 	this.send = function (objForm, config) {
+        
+		// importando los datos del formulario
+        var objCast = $(objForm);
+		var method = objCast.attr('method');
+		var rute = objCast.attr('action');
+		var data = objCast.serialize();
+        
 
 		var defaults = {
-		    url: '/erros/404',
-            type: 'GET',
+		    url: rute,
+            type: method,
             async: true,
-            data: '',
+            data: data,
             dataType: "json",
-            success: callBackSuccess,
-            error: callBackError,
+            success: this.callBackSuccess(),
+            error: this.callBackError(),
 	    }
 
 	    /* Comprobamos que la configuracion este
@@ -35,8 +54,16 @@ var HelperServerPetition = function () {
 
         }	    
 
-	    $.ajax(defaults);
-		
+        // enviando datos 
+	    $.ajax(defaults);		
 
 	}
+    // funcion por defecto cuando la peticion es exitosa
+	this.callBackSuccess = function(){}
+    // funcion por defecto cuando la peticion es fallida
+	this.callBackError = function(){}
+	
 }
+
+// INICIALIZAR
+var HelperServerPetition = new HelperServerPetition();
