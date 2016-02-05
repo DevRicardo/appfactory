@@ -131,10 +131,10 @@
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
     <!--- Ayudantes js (Funciones genericas para la interacion con javascript)  -->
-    {!! Html::script("js/lib/HelperForm.js") !!}
-    {!! Html::script("js/lib/HelperValidation.js") !!}
-    {!! Html::script("js/lib/HelperForm.js") !!}
-    {!! Html::script("js/lib/HelperServerPetition.js") !!}
+    {!! Html::script("js/Helpers/HelperForm.js") !!}
+    {!! Html::script("js/Helpers/HelperValidation.js") !!}
+    {!! Html::script("js/Helpers/HelperForm.js") !!}
+    {!! Html::script("js/Helpers/HelperServerPetition.js") !!}
 
     {!! Html::script("js/base.js") !!}
 

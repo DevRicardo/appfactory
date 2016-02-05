@@ -24,6 +24,7 @@ class CreateProjectsTable extends Migration {
             $table->text('description');
             $table->integer('user_id')->unsigned();
             $table->integer('categorie_id')->unsigned();
+            $table->integer('state_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });

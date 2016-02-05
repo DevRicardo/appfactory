@@ -26,7 +26,7 @@ class Messages
 	* @param format (puede ser json y html)
 	* @return array
 	*/
-	public function emit($type, $message, $data = [] , $format = "json")
+	public function emit($type, $message = [], $data = [] , $format = "json")
 	{
         return ['type' => $type, 'msg' => $message, 'data' => $data];
 	}

@@ -15,20 +15,12 @@ class Project extends Model {
         'name',
         'description',
         'user_id',
-        'categorie_id'
+        'categorie_id',
+        'state_id'
 
     ];
 
-    /*
-    * 
-    */
-    public static $rules = [
-        "amb_placa" => "required|max:20",
-        "amb_modelo" => "required|max:100",
-        "amb_tarjetapropiedad" => "required|max:100",
-        "amb_modalidad" => "required|in:TERRESTRE,AÉREA"
-    ];
-
+   
     
 
     public function categorie()

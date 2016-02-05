@@ -30,8 +30,7 @@ var HelperServerPetition = function () {
         var objCast = $(objForm);
 		var method = objCast.attr('method');
 		var rute = objCast.attr('action');
-		var data = objCast.serialize();
-        
+		var data = objCast.serialize();              
 
 		var defaults = {
 		    url: rute,
@@ -39,29 +38,33 @@ var HelperServerPetition = function () {
             async: true,
             data: data,
             dataType: "json",
-            success: this.callBackSuccess(),
-            error: this.callBackError(),
+            success: this.callBackSuccess,
+            error: this.callBackError
 	    }
-
 	    /* Comprobamos que la configuracion este
         *  definida
         */
-        if(typeof(config) != "undefined"){
-            
+        if(typeof(config) != "undefined"){            
             // mesclamos la configuracion con los valores por
             // defecto
             $.extend(defaults, config);
-
-        }	    
-
+        }
         // enviando datos 
 	    $.ajax(defaults);		
 
 	}
     // funcion por defecto cuando la peticion es exitosa
-	this.callBackSuccess = function(){}
-    // funcion por defecto cuando la peticion es fallida
-	this.callBackError = function(){}
+	this.callBackSuccess = function(data){}
+    /*Funcion que se ejecutara si la petición ajax
+      no se pueda realizar
+    * @param: data (resultado que viene de la peticion al servidor)
+    * @param: status (texto de error)
+    * @param: objXHR  (objeto con toda la informacion de la peticion 
+             {" objXHR.status, objXHR.statusText, objXHR.responseText"} )*/
+	this.callBackError = function(data, status, objXHR ){}
+
+
+
 	
 }
 
