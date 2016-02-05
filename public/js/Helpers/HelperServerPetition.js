@@ -39,7 +39,9 @@ var HelperServerPetition = function () {
             data: data,
             dataType: "json",
             success: this.callBackSuccess,
-            error: this.callBackError
+            error: this.callBackError,
+            complete:this.callBackComplete,
+            beforeSend:this.callBackbeforeSend
 	    }
 	    /* Comprobamos que la configuracion este
         *  definida
@@ -62,6 +64,15 @@ var HelperServerPetition = function () {
     * @param: objXHR  (objeto con toda la informacion de la peticion 
              {" objXHR.status, objXHR.statusText, objXHR.responseText"} )*/
 	this.callBackError = function(data, status, objXHR ){}
+
+    // funcion por defecto cuando la peticion es completada
+    this.callBackComplete = function(data, status, objXHR ){
+        alert("completo");
+    }
+    // funcion por defecto antes de enviar los datos
+    this.callBackbeforeSend = function(data, status, objXHR ){
+        alert("Antes");
+    }
 
 
 
