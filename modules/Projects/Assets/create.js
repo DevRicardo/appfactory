@@ -10,8 +10,11 @@ function eventCreate ()
 	// Formulario en la vista create con la class="create"
 	$(".create").on('submit', function(event) {
 		// evitando el comportamiento por defecto del boton type submit
-		event.preventDefault();
+		event.preventDefault();		
 		var objElement = this;
+		// validacion de campos
+		HelperValidation.execute(objElement);
+
 		HelperServerPetition.send(objElement,{
 			success: successCreate,
 			error:   errorCreate
