@@ -32,9 +32,10 @@ class ComponetViewController extends Controller
     public function select($component)
     {
     	$function = $component;
-    	dd(__NAMESPACE__ .'\\'.$this->className.'\\'.$function);
-        if(function_exists(__NAMESPACE__ .''.$function))
+    	//dd(__NAMESPACE__ .'\\'.$this->className.'\\'.$function);
+        if(method_exists(__NAMESPACE__ .'\\'.$this->className, $function))
         {
+        	$component = [__NAMESPACE__ .'\\'.$this->className,$function];
             return call_user_func($component);   
         }else{
         	$result['component'] = view('errors.404')->render();
@@ -56,7 +57,7 @@ class ComponetViewController extends Controller
     // app esta realizando una ccion.
     public function preloader()
     {
-    	$result['component'] = view('partials.componets.preloader')->render();
+    	$result['component'] = view('partials.components.preloader')->render();
     	return response()->json($result);
     }
 

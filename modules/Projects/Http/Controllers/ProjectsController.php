@@ -41,6 +41,13 @@ class ProjectsController extends Controller {
 
 	public function store(CreateProjectsRequest $request)
 	{
+        $contador = 0;
+
+		while ( $contador < 1000000000) {
+			# code...
+
+			$contador++;
+		}
 
 		$project = Project::create($request->all());
 		$resultMessage = $this->message->emit(Messages::SUCCESS,['msj'=>'Projects create succesfull']);

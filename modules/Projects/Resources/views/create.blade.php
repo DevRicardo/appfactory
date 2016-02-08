@@ -32,6 +32,7 @@
   <div class="row">
     
     {!! Form::open(['url'=>'projects', 'method'=>'POST', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 create']) !!}
+    
     <blockquote>
       <h5>Create new proyect</h5>
     </blockquote>
