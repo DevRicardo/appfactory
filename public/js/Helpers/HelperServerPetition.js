@@ -106,15 +106,18 @@ var HelperServerPetition = {
         var objCast = $(objForm);
 		var method = objCast.attr('method');
 		var rute = objCast.attr('action');
-		var data = objCast.serialize();    
+		//var data = objCast.serialize();    
         this.objForm = objCast;          
-
+        var formData = new FormData($(objForm)[0]);
 		var defaults = {
 		    url: rute,
             type: method,
             async: true,
-            data: data,
+            data: formData,
             dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
             success: this.callBackSuccess,
             error: this.callBackError,
             complete:this.callBackComplete,

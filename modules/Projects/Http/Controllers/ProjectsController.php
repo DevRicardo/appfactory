@@ -19,50 +19,64 @@ class ProjectsController extends Controller {
         $this->message = $message;
 	}
 	
+	/**
+    * Mustar el listado de todos los proyectos 
+    */
 	public function index()
 	{
 		return view('projects::index');
 	}
 
 
-
+    /**
+    * muestra la vista para crear proyecto
+    *
+    */
 	public function create()
 	{
 		return view('projects::create');
 	}
 
 
-
+    /**
+    * Muestra el formulario para editar proyecto
+    */
 	public function edit()
 	{
 
 	}
 
-
+    /**
+    * crea un nuevo proyecto
+    *
+    * @param  CreateProjectsRequest  $data
+    * @return json
+    */ 
 	public function store(CreateProjectsRequest $request)
-	{
-        $contador = 0;
-
-		while ( $contador < 1000000000) {
-			# code...
-
-			$contador++;
-		}
-
+	{        
 		$project = Project::create($request->all());
 		$resultMessage = $this->message->emit(Messages::SUCCESS,['msj'=>'Projects create succesfull']);
         return response()->json($resultMessage);
 	}
 
 
-
+    /**
+    * Actualiza un proyecto
+    *
+    * @param  UpdateProjectsRequest  $data
+    * @return json
+    */
 	public function update(Request $request, $id)
 	{
 
 	}
 
-
-	public function destroy()
+    /**
+    * Elimina un proyecto
+    *
+    * @param  integer  $id
+    */
+	public function destroy($id)
 	{
 
 	}

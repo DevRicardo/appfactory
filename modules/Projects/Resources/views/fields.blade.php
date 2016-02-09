@@ -1,6 +1,6 @@
 <div class="row">
         <div class="input-field col s6 name">
-          <input placeholder="Placeholder" id="name" name="name" data-validate="required safePassword" type="text" class="">          
+          <input placeholder="Placeholder" id="name" name="name" data-validate="required text" type="text" class="">          
           <label for="name">Name project</label>
           <span class='helper-error'><ul></ul></span>
 

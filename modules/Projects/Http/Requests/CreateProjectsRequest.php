@@ -63,6 +63,20 @@ class CreateProjectsRequest extends FormRequest {
                                         ->withErrors($errors, $this->errorBag);
     }
 
+
+    /**
+    * Formatea la salida de los mensajes al formato estandar 
+    * definido por la clase App\Tools\Message
+    *
+    * @param  array  $errors
+    * @return array  $errors
+    */
+    public function changeFormatError($error){
+        $formatError = array();
+
+        return $formatError;
+    }
+
        
 
 
