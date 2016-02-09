@@ -6,17 +6,20 @@ use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Entities\Project;
 use Illuminate\Http\Request;
 use App\Tools\Messages;
+use App\Tools\Files;
 use Response;
 
 class ProjectsController extends Controller {
 
     private $projectrepository;
     private $message;
+    private $files;
 
-	public function __construct(ProjectRepository $projectRepo, Messages $message)
+	public function __construct(ProjectRepository $projectRepo, Messages $message, Files $file)
 	{
         $this->projectrepository = $projectRepo;
         $this->message = $message;
+        $this->files = $file;
 	}
 	
 	/**
@@ -53,7 +56,10 @@ class ProjectsController extends Controller {
     * @return json
     */ 
 	public function store(CreateProjectsRequest $request)
-	{        
+	{   
+        $this->files->setType(Files::IMAGE);
+        $this->files->upload($request,'image');
+        
 		$project = Project::create($request->all());
 		$resultMessage = $this->message->emit(Messages::SUCCESS,['msj'=>'Projects create succesfull']);
         return response()->json($resultMessage);

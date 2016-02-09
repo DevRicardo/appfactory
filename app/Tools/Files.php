@@ -3,7 +3,8 @@ namespace App\Tools;
 
 use Illuminate\Http\Request;
 use App\Tools\Messages;
-use Storage;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File as archive;
 use Auth;
 
 
@@ -36,7 +37,7 @@ class Files
             'compress'=>['zip','rar','tar','tar.gz'],
             'image'   =>['jpg','jpeg','png','gif'],
             'video'   =>['avi','mp4'],
-            'audio'   =>['mp3','acc'],
+            'audio'   =>['mp3','acc']
 		];
 		$this->size = 3; // megas
 		$this->error = [];
@@ -72,16 +73,12 @@ class Files
     * @param  Request  $data
     * @return json
     */ 
-	public function upload(Request $request, $campo)
-	{
+	public function upload(Request $request, $campo){
 		$file = $request->file($campo);
-		//obtenemos el nombre del archivo
-        $name = $file->getClientOriginalName();
-
-       //indicamos que queremos guardar un nuevo archivo en el disco local
-       \Storage::disk('local')->put($name,  \File::get($file));
-
-	}
+		$nombre = $file->getClientOriginalName();
+		$extention = $file->getClientOriginalExtension();
+		Storage::disk('local')->put($this->generateNewName().".".$extention, archive::get($file));
+    }
     
 
 	/**
