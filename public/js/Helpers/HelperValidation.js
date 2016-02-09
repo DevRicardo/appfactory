@@ -41,7 +41,7 @@ var HelperValidation = {
 
 
 	},
-
+    // arreglo que almacena el resultado de la validacion del formulario
 	error:[],
 
 
@@ -80,19 +80,27 @@ var HelperValidation = {
 	execute: function(objForm){
       
         var index = 0;
+        var numError = 0;
 		$(objForm).find(':input').each(function() {
             var elemento= this;
             var id = $(elemento).attr('id');
             var type = $(elemento).attr('type');
             var classValidate = $(elemento).data('validate');
-            //alert("elemento.name=" + elemento.name);
-            
+                        
             if(typeof(classValidate) != 'undefined' && classValidate != ''){
-                //alert(classValidate+" ----");
+                //limpia el contenido de los span que muestran el error
+                $("."+id+" ."+HelperMessage.classSpanError+" ul").html("");
+
                 var arrayClass = classValidate.split(' ');
 
                 for (var i = 0; i < arrayClass.length; i++) {
+                    // aplicando la funcion de validacion dependiendo de las clases 
+                    // que se encuentren en el campo.
                     HelperValidation.error[index] = HelperValidation.applyValidator(arrayClass[i],elemento);
+                    
+                    if(HelperValidation.error[index].error){
+                        numError ++;
+                    }
                     index++;
                 }
                 
@@ -101,8 +109,14 @@ var HelperValidation = {
 
             
         });
-
+        // Mouesrtra los errores en la vista
+        HelperValidation.showIsError();
         
+        if(numError > 0){           
+           return false;
+        }else{
+            return true;
+        }       
 
 	},
 
@@ -115,12 +129,16 @@ var HelperValidation = {
 
         var objetoValidado = {};
         var error = null;
+        var type = null;
         var id_imput = $(objInput).attr('id');
         // se valida que la funcion exista 
 		if($.isFunction( window["HelperValidation"][rule] )){
 
 			//ejecutamos la validacion
 			error = window["HelperValidation"][rule](objInput);
+            if(error){
+               type = "error";
+            }
 
 		}else{
 			alert("No se encontro la funcion definida para la validacion (helperValidation:L112)");
@@ -129,11 +147,27 @@ var HelperValidation = {
         objetoValidado.rule = rule;
         objetoValidado.message = HelperValidation.rules[rule];
 		objetoValidado.field = id_imput;
-		objetoValidado.error = error; 
+		objetoValidado.error = error;
+        objetoValidado.type = type;
 
-		return objetoValidado;       
+		return objetoValidado;
 
 	},
+
+    // lee el arreglo que resulta de la ejecucion de las validaciones 
+    // y precenta los mensajes a la vista
+    showIsError: function(){
+        HelperError = HelperValidation.error;
+        for (var i = 0; i < HelperError.length; i++) {
+            
+           if(HelperError[i].error == true){
+               
+               HelperMessage.showAlertForm(HelperError[i]);
+           } 
+
+        }
+
+    },
 
 
 
@@ -160,7 +194,6 @@ var HelperValidation = {
         }
 
 	},
-
 	safePassword: function(objInput){
 
         var value = $(objInput).val().trim();
@@ -168,7 +201,6 @@ var HelperValidation = {
         return !value.match(expercion);
 
 	},
-
 	text: function(objInput){
 
         var value = $(objInput).val().trim();
@@ -176,41 +208,31 @@ var HelperValidation = {
         return !is.regexp(expercion);
 
 	},
-
-
 	required: function(objInput){
 
-        var value = $(objInput).val().trim();
+        var value = $(objInput).val();
         return is.empty(value);
-
 	},
-
 	number: function(objInput){
-        var value = $(objInput).val().trim();
+        var value = parseInt($(objInput).val());
         return !is.number(value);
 	},
-
 	url: function(objInput){
-        var value = $(objInput).val().trim();
+        var value = $(objInput).val();
         return !is.url(value);
 	},
-
 	email: function(objInput){
-        var value = $(objInput).val().trim();
+        var value = $(objInput).val();
         return !is.email(value);
 	},
-
 	alphaNumeric: function(objInput){
-        var value = $(objInput).val().trim();
+        var value = $(objInput).val();
         return !is.alphaNumeric(value);
 	},
-
 	integer: function(objInput){
-        var value = $(objInput).val().trim();
+        var value = parseInt($(objInput).val());        
         return !is.integer(value);
 	},
-
-
 
 
 

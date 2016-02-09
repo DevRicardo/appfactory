@@ -11,10 +11,11 @@ class Messages
     /*
     * Tipos de mensajes permitidos
     */
-	const INFO = "info";
-    const DANGER = "danger";
+	const INFO    = "information";
+    const DANGER  = "error";
     const SUCCESS = "success";
     const WARNING = "warning";
+    const ALERT   = "alert";
 	
 
 	/*

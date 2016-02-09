@@ -40,9 +40,10 @@
     @include('projects::fields')
    
 
-    <div class="input-field col s6">
+    <div class="input-field col s6" style="margin-bottom: 18px;">
         <input type="submit" class="btn waves-effect waves-light blue lighten-1" value="Create" />
     </div>
+    <br>
     {!! Form::close() !!}
   </div>
 

@@ -12,13 +12,16 @@ function eventCreate ()
 		// evitando el comportamiento por defecto del boton type submit
 		event.preventDefault();		
 		var objElement = this;
-		// validacion de campos
-		HelperValidation.execute(objElement);
+		// validacion de campos 
+		if(HelperValidation.execute(objElement)){
 
-		HelperServerPetition.send(objElement,{
-			success: successCreate,
-			error:   errorCreate
-		});
+		    HelperServerPetition.send(objElement,{
+		    	success: successCreate,
+		    	error:   errorCreate
+		    });
+		}
+
+
 	});
 }
 

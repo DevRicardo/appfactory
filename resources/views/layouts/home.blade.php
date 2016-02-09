@@ -11,6 +11,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {!! Html::style("css/materialize.css") !!}
     {!! Html::style("bower_components/animate.css/animate.css") !!}
+    {!! Html::style("css/main.css") !!}
 
     <!-- Styles -->
     
@@ -101,6 +102,11 @@
     </div>
   </nav>
 
+  <!--  seccion para notificaciones por default  -->
+  <div id="dashboard-messge"> 
+
+  </div>
+
   
  
     <div class="container">
@@ -128,10 +134,11 @@
     {!! Html::script("bower_components/underscore/underscore.js") !!}
     {!! Html::script("bower_components/is_js/is.js") !!}
     {!! Html::script("bower_components/moment/moment.js") !!}    
-    {!! Html::script("bower_components/noty/js/noty/jquery.noty.js") !!}
+    {!! Html::script("bower_components/noty/js/noty/packaged/jquery.noty.packaged.js") !!}
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
     <!--- Ayudantes js (Funciones genericas para la interacion con javascript)  -->
+    {!! Html::script("js/Helpers/HelperMessage.js") !!}
     {!! Html::script("js/Helpers/HelperForm.js") !!}
     {!! Html::script("js/Helpers/HelperValidation.js") !!}
     {!! Html::script("js/Helpers/HelperForm.js") !!}
