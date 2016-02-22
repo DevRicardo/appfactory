@@ -13,13 +13,13 @@ function eventCreate ()
 		event.preventDefault();		
 		var objElement = this;
 		// validacion de campos 
-		//if(HelperValidation.execute(objElement)){
+		if(HelperValidation.execute(objElement)){
 
 		    HelperServerPetition.send(objElement,{
 		    	success: successCreate,
 		    	error:   errorCreate
 		    });
-		//}
+		}
 
 
 	});

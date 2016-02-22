@@ -20,9 +20,10 @@ var HelperServerPetition = {
 
 	//url base del proyecto
 
-    /* muestra y oculta un indicador de 
+     /* muestra y oculta un indicador de 
      * carga mientras dura la petición ajax
      * @param: action(show o hidden) -- inidica si mostrar u ocultar eñ preloader
+     * @param  elementClass clase del contenedor del preload
      * @return: codigo html del preloader
      */
     actionPreloader: function(action, elementClass){

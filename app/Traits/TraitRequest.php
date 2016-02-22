@@ -33,8 +33,6 @@ trait TraitRequest
 	}
 
 
-
-
 	/**
 	* Redefiniendo el metodo de la clase Illuminate\Foundation\Http\FormRequest
     * Get the proper failed validation response for the request.
