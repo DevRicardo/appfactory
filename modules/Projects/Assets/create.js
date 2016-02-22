@@ -13,13 +13,13 @@ function eventCreate ()
 		event.preventDefault();		
 		var objElement = this;
 		// validacion de campos 
-		if(HelperValidation.execute(objElement)){
+		//if(HelperValidation.execute(objElement)){
 
 		    HelperServerPetition.send(objElement,{
 		    	success: successCreate,
 		    	error:   errorCreate
 		    });
-		}
+		//}
 
 
 	});
@@ -49,7 +49,12 @@ var successCreate = function(data)
 {
 	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
 	HelperServerPetition.actionPreloader('hidden','indicador_carga');
-
+	HelperMessage.displayNotyOn(data);
+	if(data.type == "success")
+	{
+        HelperForm.clean(HelperServerPetition.objForm);
+	}
+	
 }
 
 

@@ -64,3 +64,19 @@ Route::get('erros/{cod_http}','RedirectsDefaultController@error');
 
 
 Route::get('componet/{componet}','ComponetViewController@select');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Application view log
+|--------------------------------------------------------------------------
+|
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
+|
+*/
+
+
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

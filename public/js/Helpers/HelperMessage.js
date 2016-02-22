@@ -28,23 +28,44 @@ var HelperMessage = {
                open: {height: 'toggle'}, // jQuery animate function property object
                close: {height: 'toggle'}, // jQuery animate function property object
                easing: 'swing', // easing
-               speed: 500 // opening & closing animation speed
-            }
+               speed: 500// opening & closing animation speed
+               
+            },
+        dismissQueue: true,
+        timeout:3000   
         });        
 
     },
     
 
 	showAlertForm: function(responseData){
-        var type = responseData.type;
-        var message = responseData.message;
-        var id = responseData.field;
-        // contenedor del error
-        $("."+id+" ."+HelperMessage.classSpanError+" ul").append("<li>"+message+"</li>");
-
+      var type = responseData.type;
+      var message = responseData.message;
+      var id = responseData.field;
+      // contenedor del error
+      $("."+id+" ."+HelperMessage.classSpanError+" ul").append("<li>"+message+"</li>");
+    
         
 
 	},
+
+
+  displayNotyOn: function(responseData){
+      var type = responseData.type;      
+      var id = responseData.field;
+      var messages = HelperMessage.listMessage( responseData.msg );  
+      HelperMessage.showNoty(messages,type);
+  },
+
+  listMessage: function(objMensajes){
+       var result = "";
+       for(var i = 0; i < objMensajes.length; i++)
+       {
+           alert(i);
+           result += ""+objMensajes[i]+"<br>";
+       }
+       return result;
+  }
 
 
 

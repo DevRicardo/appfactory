@@ -1084,10 +1084,10 @@ $.noty.themes.bootstrapTheme = {
         }
 
         this.$message.css({
-            fontSize: '13px',
+            fontSize: '16px',
             lineHeight: '16px',
             textAlign: 'center',
-            padding: '8px 10px 9px',
+            padding: '19px 10px 19px',
             width: 'auto',
             position: 'relative'
         });
@@ -1108,7 +1108,7 @@ $.noty.themes.defaultTheme = {
                 switch(this.options.layout.name) {
                     case 'top':
                         $(selector).css({borderRadius: '0px 0px 0px 0px'});
-                        $(selector).last().css({borderRadius: '0px 0px 5px 5px'});
+                        $(selector).last().css({borderRadius: '0px 0px 0px 0px'});
                         break;
                     case 'topCenter':
                     case 'topLeft':
@@ -1126,7 +1126,7 @@ $.noty.themes.defaultTheme = {
                         break;
                     case 'bottom':
                         $(selector).css({borderRadius: '0px 0px 0px 0px'});
-                        $(selector).first().css({borderRadius: '5px 5px 0px 0px'});
+                        $(selector).first().css({borderRadius: '0px 0px 0px 0px'});
                         break;
                     default:
                         break;
@@ -1151,14 +1151,14 @@ $.noty.themes.defaultTheme = {
 
         this.$bar.css({
             overflow  : 'hidden',
-            background: "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAoCAQAAAClM0ndAAAAhklEQVR4AdXO0QrCMBBE0bttkk38/w8WRERpdyjzVOc+HxhIHqJGMQcFFkpYRQotLLSw0IJ5aBdovruMYDA/kT8plF9ZKLFQcgF18hDj1SbQOMlCA4kao0iiXmah7qBWPdxpohsgVZyj7e5I9KcID+EhiDI5gxBYKLBQYKHAQoGFAoEks/YEGHYKB7hFxf0AAAAASUVORK5CYII=') repeat-x scroll left top #fff"
+            //background: "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAoCAQAAAClM0ndAAAAhklEQVR4AdXO0QrCMBBE0bttkk38/w8WRERpdyjzVOc+HxhIHqJGMQcFFkpYRQotLLSw0IJ5aBdovruMYDA/kT8plF9ZKLFQcgF18hDj1SbQOMlCA4kao0iiXmah7qBWPdxpohsgVZyj7e5I9KcID+EhiDI5gxBYKLBQYKHAQoGFAoEks/YEGHYKB7hFxf0AAAAASUVORK5CYII=') repeat-x scroll left top #fff"
         });
 
         this.$message.css({
-            fontSize  : '13px',
+            fontSize  : '16px',
             lineHeight: '16px',
             textAlign : 'center',
-            padding   : '8px 10px 9px',
+            padding   : '19px 10px 19px',
             width     : 'auto',
             position  : 'relative'
         });
@@ -1167,7 +1167,7 @@ $.noty.themes.defaultTheme = {
             position  : 'absolute',
             top       : 4, right: 4,
             width     : 10, height: 10,
-            background: "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAxUlEQVR4AR3MPUoDURSA0e++uSkkOxC3IAOWNtaCIDaChfgXBMEZbQRByxCwk+BasgQRZLSYoLgDQbARxry8nyumPcVRKDfd0Aa8AsgDv1zp6pYd5jWOwhvebRTbzNNEw5BSsIpsj/kurQBnmk7sIFcCF5yyZPDRG6trQhujXYosaFoc+2f1MJ89uc76IND6F9BvlXUdpb6xwD2+4q3me3bysiHvtLYrUJto7PD/ve7LNHxSg/woN2kSz4txasBdhyiz3ugPGetTjm3XRokAAAAASUVORK5CYII=)",
+            //background: "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAxUlEQVR4AR3MPUoDURSA0e++uSkkOxC3IAOWNtaCIDaChfgXBMEZbQRByxCwk+BasgQRZLSYoLgDQbARxry8nyumPcVRKDfd0Aa8AsgDv1zp6pYd5jWOwhvebRTbzNNEw5BSsIpsj/kurQBnmk7sIFcCF5yyZPDRG6trQhujXYosaFoc+2f1MJ89uc76IND6F9BvlXUdpb6xwD2+4q3me3bysiHvtLYrUJto7PD/ve7LNHxSg/woN2kSz4txasBdhyiz3ugPGetTjm3XRokAAAAASUVORK5CYII=)",
             display   : 'none',
             cursor    : 'pointer'
         });
@@ -1199,7 +1199,7 @@ $.noty.themes.defaultTheme = {
         switch(this.options.layout.name) {
             case 'top':
                 this.$bar.css({
-                    borderRadius: '0px 0px 5px 5px',
+                    borderRadius: '0px 0px 0px 0px',
                     borderBottom: '2px solid #eee',
                     borderLeft  : '2px solid #eee',
                     borderRight : '2px solid #eee',
@@ -1211,11 +1211,11 @@ $.noty.themes.defaultTheme = {
             case 'bottomCenter':
             case 'inline':
                 this.$bar.css({
-                    borderRadius: '5px',
+                    borderRadius: '0px',
                     border      : '1px solid #eee',
                     boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'center'});
+                this.$message.css({fontSize: '16px', textAlign: 'center'});
                 break;
             case 'topLeft':
             case 'topRight':
@@ -1224,15 +1224,15 @@ $.noty.themes.defaultTheme = {
             case 'centerLeft':
             case 'centerRight':
                 this.$bar.css({
-                    borderRadius: '5px',
+                    borderRadius: '0px',
                     border      : '1px solid #eee',
                     boxShadow   : "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'left'});
+                this.$message.css({fontSize: '16px', textAlign: 'left'});
                 break;
             case 'bottom':
                 this.$bar.css({
-                    borderRadius: '5px 5px 0px 0px',
+                    borderRadius: '0px 0px 0px 0px',
                     borderTop   : '2px solid #eee',
                     borderLeft  : '2px solid #eee',
                     borderRight : '2px solid #eee',
@@ -1257,7 +1257,7 @@ $.noty.themes.defaultTheme = {
                 this.$buttons.css({borderTop: '1px solid #FFC237'});
                 break;
             case 'error':
-                this.$bar.css({backgroundColor: 'red', borderColor: 'darkred', color: '#FFF'});
+                this.$bar.css({backgroundColor: '#ff8484', borderColor: 'darkred', color: '#FFF'});
                 this.$message.css({fontWeight: 'bold'});
                 this.$buttons.css({borderTop: '1px solid darkred'});
                 break;
@@ -1266,7 +1266,7 @@ $.noty.themes.defaultTheme = {
                 this.$buttons.css({borderTop: '1px solid #0B90C4'});
                 break;
             case 'success':
-                this.$bar.css({backgroundColor: 'lightgreen', borderColor: '#50C24E', color: 'darkgreen'});
+                this.$bar.css({backgroundColor: '#82d883', borderColor: '#50C24E', color: 'darkgreen'});
                 this.$buttons.css({borderTop: '1px solid #50C24E'});
                 break;
             default:
@@ -1305,11 +1305,11 @@ $.noty.themes.relax = {
         this.$bar.css({
             overflow    : 'hidden',
             margin      : '4px 0',
-            borderRadius: '2px'
+            borderRadius: '0px'
         });
 
         this.$message.css({
-            fontSize  : '14px',
+            fontSize  : '16px',
             lineHeight: '16px',
             textAlign : 'center',
             padding   : '10px',
@@ -1321,7 +1321,7 @@ $.noty.themes.relax = {
             position  : 'absolute',
             top       : 4, right: 4,
             width     : 10, height: 10,
-            background: "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAxUlEQVR4AR3MPUoDURSA0e++uSkkOxC3IAOWNtaCIDaChfgXBMEZbQRByxCwk+BasgQRZLSYoLgDQbARxry8nyumPcVRKDfd0Aa8AsgDv1zp6pYd5jWOwhvebRTbzNNEw5BSsIpsj/kurQBnmk7sIFcCF5yyZPDRG6trQhujXYosaFoc+2f1MJ89uc76IND6F9BvlXUdpb6xwD2+4q3me3bysiHvtLYrUJto7PD/ve7LNHxSg/woN2kSz4txasBdhyiz3ugPGetTjm3XRokAAAAASUVORK5CYII=)",
+            //background: "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAxUlEQVR4AR3MPUoDURSA0e++uSkkOxC3IAOWNtaCIDaChfgXBMEZbQRByxCwk+BasgQRZLSYoLgDQbARxry8nyumPcVRKDfd0Aa8AsgDv1zp6pYd5jWOwhvebRTbzNNEw5BSsIpsj/kurQBnmk7sIFcCF5yyZPDRG6trQhujXYosaFoc+2f1MJ89uc76IND6F9BvlXUdpb6xwD2+4q3me3bysiHvtLYrUJto7PD/ve7LNHxSg/woN2kSz4txasBdhyiz3ugPGetTjm3XRokAAAAASUVORK5CYII=)",
             display   : 'none',
             cursor    : 'pointer'
         });
@@ -1368,7 +1368,7 @@ $.noty.themes.relax = {
                     border   : '1px solid #eee',
                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'center'});
+                this.$message.css({fontSize: '16px', textAlign: 'center'});
                 break;
             case 'topLeft':
             case 'topRight':
@@ -1380,7 +1380,7 @@ $.noty.themes.relax = {
                     border   : '1px solid #eee',
                     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
                 });
-                this.$message.css({fontSize: '13px', textAlign: 'left'});
+                this.$message.css({fontSize: '16px', textAlign: 'left'});
                 break;
             case 'bottom':
                 this.$bar.css({

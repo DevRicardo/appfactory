@@ -17,6 +17,7 @@ class Files
 	private $type;
 	private $size;
 	private $error;
+	private $directory_storage;
 
 
 	/**
@@ -41,6 +42,7 @@ class Files
 		];
 		$this->size = 3; // megas
 		$this->error = [];
+
 
 	}
 
@@ -73,11 +75,11 @@ class Files
     * @param  Request  $data
     * @return json
     */ 
-	public function upload(Request $request, $campo){
+	public function upload(Request $request, $campo , $destination = ""){
 		$file = $request->file($campo);
 		$nombre = $file->getClientOriginalName();
 		$extention = $file->getClientOriginalExtension();
-		Storage::disk('local')->put($this->generateNewName().".".$extention, archive::get($file));
+		return Storage::disk('local')->put($destination."".$this->generateNewName().".".$extention, archive::get($file));
     }
     
 

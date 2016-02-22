@@ -1,8 +1,14 @@
 <?php namespace Modules\Projects\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Modules\Projects\Entities\Project;
+use App\Traits\TraitRequest;
+
 
 class UpdateProjectsRequest extends FormRequest {
+
+
+	use TraitRequest;
 
 	/**
 	 * Determine if the user is authorized to make this request.
