@@ -62,23 +62,21 @@ class ProjectsController extends Controller {
         $is_succesfull = $this->files->upload($request,'image');
         if( $is_succesfull )
         {
-            try {
-
+            try
+            {
                $project = Project::create($request->all()); 
                $resultMessage = $this->message->emit(Messages::SUCCESS,['Projects create succesfull']); 
             
             } catch (Exception $e) {
-
-               $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create project']);
- 
-            }           
+               $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create project']); 
+            }          
             
         }
         else
         {
             $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create project']);
         }
-		
+        		
         return response()->json($resultMessage);
 	}
 
