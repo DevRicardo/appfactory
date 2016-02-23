@@ -52,8 +52,8 @@
 @stop
 
 @section('scripts')
-   {!! Html::script("modules/Projects/create.js") !!}
-   {!! Html::script("modules/Projects/projects.js") !!}
+
+     @include('projects::partial.script')
 
 @stop
 

@@ -14,7 +14,7 @@
         <div class="col s12 m12 l4">
 
             <div class="card hoverable" style="height:250px">
-              <div class="card-image waves-effect waves-block waves-light blue lighten-3" style="height: 100px;">
+              <div class="card-image waves-effect waves-block waves-light" style="height: 100px;">
                  <img class="activator" src="{!! url('storage/'.$project->image) !!}">
               </div>
               <div class="card-title grey-text text-darken-4 center-align flow-text activator" >{!! $project->name !!}</div>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="col s12 m12 l12 " >
-                        <a class="waves-effect waves-light btn btn-small " style="width: 100%; margin-top:5px;">
+                        <a href="{!! url('/projects/'.$project->id.'/edit') !!}" class="waves-effect waves-light btn btn-small " style="width: 100%; margin-top:5px;">
                            <i class="small material-icons">create</i> 
                            Edit
                       </a>  
@@ -70,28 +70,10 @@
     </div>
 
 
-    <!-- <div class="row">
-        <div class="col s12 m7 l12">
+@stop
 
-            <div class="card">
-              <div class="card-image waves-effect waves-block waves-light purple lighten-3">
-                 <br>
-              </div>
-              <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Modulo gestión de usuarios<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">Ver detalles</a></p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Modulo gestión de usuarios<i class="material-icons right">close</i></span>
-                <p>Modulo encargado de crear, actualizar e inactivar usuarios. ademas de gestionar sus permisos.</p>
-              </div>
-            </div>          
+@section('scripts')
 
-        </div>
-    </div> -->
-
-
-
-
+     @include('projects::partial.script')
 
 @stop

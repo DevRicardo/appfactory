@@ -42,7 +42,8 @@ eventCreate ();
 *            VIEW EDIT                  *
 *                                       *
 *****************************************/
-
+// evento para mostrar imagen completa del formulario editar
+showAndHideImage();
 
 
 

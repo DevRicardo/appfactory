@@ -57,13 +57,15 @@ class ProjectsController extends Controller {
     /**
     * Muestra el formulario para editar proyecto
     */
-	public function edit()
+	public function edit($id)
 	{
         $categories = Categorie::ListForSelect();
+        $project = $this->projectrepository->find($id);
 
         $view = view('projects::edit');
         //params at view
         $view->with("categories",$categories);
+        $view->with('project', $project);
 
         return $view;
 	}
