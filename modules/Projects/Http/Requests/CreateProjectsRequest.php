@@ -33,29 +33,9 @@ class CreateProjectsRequest extends FormRequest {
             'image' => 'mimes:jpeg,bmp,png',
             'name' => 'required|alpha_dash|max:120|unique:projects',
             'description' => 'required|max:250',
-            'categorie_id' => 'required|numeric',
-            'state_id' => 'required|numeric'
+            'categorie_id' => 'required|numeric'
         ];
 	} 
-
-
-	
-
-
-    /**
-    * Formatea la salida de los mensajes al formato estandar 
-    * definido por la clase App\Tools\Message
-    *
-    * @param  array  $errors
-    * @return array  $errors
-    */
-    public function changeFormatError($error){
-        $formatError = array();
-
-        return $formatError;
-    }
-
-       
 
 
 

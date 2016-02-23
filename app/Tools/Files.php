@@ -18,6 +18,7 @@ class Files
 	private $size;
 	private $error;
 	private $directory_storage;
+	private $newName;
 
 
 	/**
@@ -42,8 +43,15 @@ class Files
 		];
 		$this->size = 3; // megas
 		$this->error = [];
+		$this->newName = "";
 
 
+	}
+
+
+	public function getNewName()
+	{
+		return $this->newName;
 	}
 
     /**
@@ -79,7 +87,8 @@ class Files
 		$file = $request->file($campo);
 		$nombre = $file->getClientOriginalName();
 		$extention = $file->getClientOriginalExtension();
-		return Storage::disk('local')->put($destination."".$this->generateNewName().".".$extention, archive::get($file));
+		$this->newName = $destination."".$this->generateNewName().".".$extention;
+		return Storage::disk('local')->put($this->newName, archive::get($file));
     }
     
 

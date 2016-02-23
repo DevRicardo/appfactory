@@ -16,4 +16,6 @@ class ProjectRepository extends Repository
     public function model(){
     	return 'Modules\Projects\Entities\Project';
     }
+
+    
 }

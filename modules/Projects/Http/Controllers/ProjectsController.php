@@ -4,10 +4,12 @@ use Pingpong\Modules\Routing\Controller;
 use Modules\Projects\Http\Requests\CreateProjectsRequest;
 use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Entities\Project;
+use Modules\Projects\Entities\Categorie;
 use Illuminate\Http\Request;
 use App\Tools\Messages;
 use App\Tools\Files;
 use Response;
+use DB;
 
 class ProjectsController extends Controller {
 
@@ -27,7 +29,12 @@ class ProjectsController extends Controller {
     */
 	public function index()
 	{
-		return view('projects::index');
+       $projects = $this->projectrepository->paginate(9); 
+       $view = view('projects::index');
+        //params at view
+        $view->with("projects",$projects);
+
+        return $view;     
 	}
 
 
@@ -37,7 +44,13 @@ class ProjectsController extends Controller {
     */
 	public function create()
 	{
-		return view('projects::create');
+		$categories = Categorie::ListForSelect();
+
+        $view = view('projects::create');
+        //params at view
+        $view->with("categories",$categories);
+
+        return $view;
 	}
 
 
@@ -46,7 +59,13 @@ class ProjectsController extends Controller {
     */
 	public function edit()
 	{
+        $categories = Categorie::ListForSelect();
 
+        $view = view('projects::edit');
+        //params at view
+        $view->with("categories",$categories);
+
+        return $view;
 	}
 
     /**
@@ -64,10 +83,19 @@ class ProjectsController extends Controller {
         {
             try
             {
-               $project = Project::create($request->all()); 
+               DB::beginTransaction(); 
+               
+               $image = $this->files->getNewName();               
+               $project = $this->projectrepository->create($request->all()); 
+               
+               $this->projectrepository->update(['image'=>$image],$project->id);
+
+               DB::commit();
+
                $resultMessage = $this->message->emit(Messages::SUCCESS,['Projects create succesfull']); 
             
             } catch (Exception $e) {
+               DB::rollBack(); 
                $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create project']); 
             }          
             
@@ -87,7 +115,7 @@ class ProjectsController extends Controller {
     * @param  UpdateProjectsRequest  $data
     * @return json
     */
-	public function update(Request $request, $id)
+	public function update(UpdateProjectsRequest $request, $id)
 	{
 
 	}

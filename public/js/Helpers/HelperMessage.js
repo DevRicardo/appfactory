@@ -60,9 +60,8 @@ var HelperMessage = {
   listMessage: function(objMensajes){
        var result = "";
        for(var i = 0; i < objMensajes.length; i++)
-       {
-           alert(i);
-           result += ""+objMensajes[i]+"<br>";
+       {           
+          result += ""+objMensajes[i]+"<br>";
        }
        return result;
   }

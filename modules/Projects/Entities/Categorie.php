@@ -6,7 +6,7 @@ class Categorie extends Model {
 
     protected $fillable = [];
 
-
+    
 
 
 
@@ -14,5 +14,15 @@ class Categorie extends Model {
     {    	
     	return $this->hasOne('Modules\Projects\Entities\Project');
     }
+
+
+
+    public function scopeListForSelect($query)
+    {
+        $categories = $query->lists('label_categorie','id')->toArray();
+        return $categories;       
+
+    }
+
 
 }

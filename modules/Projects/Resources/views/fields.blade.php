@@ -34,17 +34,17 @@
       <div class="row">
         <div class="input-field col s6 categorie_id">
                   
-          {!! Form::select('categorie_id', ['L' => 'Large', 'S' => 'Small'], null, ['id'=>'categorie_id', 'data-validate'=>'required integer']) !!}
+          {!! Form::select('categorie_id', $categories, null, ['id'=>'categorie_id', 'data-validate'=>'required integer']) !!}
 
           <label>Categorie</label>
           <span class='helper-error'><ul></ul></span>
         </div>
 
-        <div class="input-field col s6 state_id">
+       <!-- <div class="input-field col s6 state_id">
           
           {!! Form::select('state_id', ['L' => 'Large', 'S' => 'Small'], null, ['id'=>'state_id', 'data-validate'=>'required integer']) !!}
           <label>State</label>
           <span class='helper-error'><ul></ul></span>
-        </div>
+        </div> -->
 
       </div>
