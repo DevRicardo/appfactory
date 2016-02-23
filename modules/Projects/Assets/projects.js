@@ -45,6 +45,9 @@ eventCreate ();
 // evento para mostrar imagen completa del formulario editar
 showAndHideImage();
 
+// evento para actualizar projecto
+eventUpdate()
+
 
 
 }

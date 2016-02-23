@@ -1,6 +1,6 @@
 <div class="row">
         <div class="input-field col s6 name">
-             
+          {!! csrf_field() !!}  
           {!! Form::text('name',null, ['id'=>'name', 'data-validate'=>'required text']) !!}       
           <label for="name">Name project</label>
           <span class='helper-error'><ul></ul></span>

@@ -2,6 +2,7 @@
 
 use Pingpong\Modules\Routing\Controller;
 use Modules\Projects\Http\Requests\CreateProjectsRequest;
+use Modules\Projects\Http\Requests\UpdateProjectsRequest;
 use Modules\Projects\Repositories\ProjectRepository;
 use Modules\Projects\Entities\Project;
 use Modules\Projects\Entities\Categorie;
@@ -117,9 +118,12 @@ class ProjectsController extends Controller {
     * @param  UpdateProjectsRequest  $data
     * @return json
     */
-	public function update(UpdateProjectsRequest $request, $id)
+	public function update(Request $request, $id)
 	{
-
+        for ($i=0; $i < 100000000 ; $i++) { 
+            # code...
+        }
+        dd($request->all());             
 	}
 
     /**

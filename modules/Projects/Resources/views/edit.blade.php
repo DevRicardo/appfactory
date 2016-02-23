@@ -31,7 +31,7 @@
     
   <div class="row">
     
-    {!! Form::model($project, ['url'=>'projects', 'method'=>'POST', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 update','enctype'=>'multipart/form-data']) !!}
+    {!! Form::model($project, ['url'=>'projects/'.$project->id, 'method'=>'PUT', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 update','enctype'=>'multipart/form-data']) !!}
     
     <div class="card-image waves-effect waves-block waves-light  center-align" style="height: 100px;">
         <span class="grey-text text-darken-4 close-preview" style="display:none;" >

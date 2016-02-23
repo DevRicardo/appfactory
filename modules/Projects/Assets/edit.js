@@ -4,6 +4,28 @@
 *                                                     *
 ******************************************************/
 
+function eventUpdate()
+{
+	// Formulario en la vista create con la class="create"
+	$(".update").on('submit', function(event) {
+
+		event.preventDefault();
+		var objElement = this;
+		// validacion de campos 
+		if(HelperValidation.execute(objElement)){
+
+			HelperServerPetition.send(objElement,{
+		    	success: successUpdate,
+		    	error:   errorUpdate
+		    });
+		}
+
+
+
+
+	});
+}
+
 
 function showAndHideImage()
 {
@@ -22,9 +44,7 @@ function showAndHideImage()
         	jqueryObjElement.removeAttr('style');
             jqueryObjElement.addClass("expanded"); 
             $('.close-preview').css('display', 'block'); 
-        }
-
-        
+        }       
         
 
 	});
@@ -49,7 +69,7 @@ function showAndHideImage()
 // petición ajax se realize con exito
 // @param: data (resultado que viene de la peticion al servidor)
  
-var successCreate = function(data)
+var successUpdate = function(data)
 {
 	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
 	HelperServerPetition.actionPreloader('hidden','indicador_carga');
@@ -68,7 +88,7 @@ var successCreate = function(data)
 // @param: status (texto de error)
 // @param: objXHR  (objeto con toda la informacion de la peticion 
 //	       {" objXHR.status, objXHR.statusText, objXHR.responseText"} )
-var errorCreate = function(data, status, objXHR)
+var errorUpdate = function(data, status, objXHR)
 {
 	// Proceso fallido ...
 	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
