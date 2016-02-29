@@ -16,6 +16,7 @@ class Messages
     const SUCCESS = "success";
     const WARNING = "warning";
     const ALERT   = "alert";
+    const FORM    = "form";
 	
 
 	/*

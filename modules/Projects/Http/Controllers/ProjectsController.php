@@ -30,13 +30,24 @@ class ProjectsController extends Controller {
     */
 	public function index()
 	{
-       $projects = $this->projectrepository->paginate(9); 
+       
        $view = view('projects::index');
-        //params at view
-        $view->with("projects",$projects);
 
         return $view;     
 	}
+
+
+    public function listElements(Request $request)
+    {
+        
+        $projects = $this->projectrepository; 
+        $view = view('projects::list');
+        //params at view       
+
+        $result['vista'] = $view->with("projects",$projects->paginate(1))->render();
+
+        return response()->json($result); 
+    }
 
 
     /**
@@ -60,6 +71,7 @@ class ProjectsController extends Controller {
     */
 	public function edit($id)
 	{
+
         $categories = Categorie::ListForSelect();
         $project = $this->projectrepository->find($id);
 
@@ -118,12 +130,9 @@ class ProjectsController extends Controller {
     * @param  UpdateProjectsRequest  $data
     * @return json
     */
-	public function update(Request $request, $id)
+	public function update(UpdateProjectsRequest $request, $id)
 	{
-        for ($i=0; $i < 100000000 ; $i++) { 
-            # code...
-        }
-        dd($request->all());             
+                     
 	}
 
     /**

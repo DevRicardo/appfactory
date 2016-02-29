@@ -82,7 +82,10 @@ var HelperServerPetition = {
     * formato del config = {url: , type:,  data: }
     * Para configurar la url antempoga siempre baseUrl()+'/'+<< ruta >> 
     */
-    sendBasic: function(config){
+    sendBasic: function(config,objForm){
+        
+        this.objForm = objForm;
+
         var defaults = {
             url: '',
             type: '',
@@ -90,7 +93,13 @@ var HelperServerPetition = {
             dataType: 'json'
         }
 
+        if(typeof objForm != "undefined")
+        {
+            defaults.beforeSend = this.callBackbeforeSend(objForm);
+        }
+ 
         $.extend(defaults, config);
+        
         var objResponse = $.ajax(defaults); 
         return objResponse;  
     },
@@ -152,8 +161,8 @@ var HelperServerPetition = {
         
     },
     // funcion por defecto antes de enviar los datos
-    callBackbeforeSend: function(data, status, objXHR , objForm){
-        this.objForm.remove('.indicador_carga');
+    callBackbeforeSend: function(data, status, objXHR , objForm){        
+        $('.indicador_carga').remove();
         HelperServerPetition.actionButtonSubmit(this.objForm, 'hidden');
         this.objForm.prepend('<div class="indicador_carga" ></div>');
         HelperServerPetition.actionPreloader('show','indicador_carga');

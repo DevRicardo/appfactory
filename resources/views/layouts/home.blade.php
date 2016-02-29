@@ -137,6 +137,7 @@
     {!! Html::script("bower_components/noty/js/noty/packaged/jquery.noty.packaged.js") !!}
     {!! Html::script("js/materialize.js") !!}
     {!! Html::script("js/init.js") !!}
+    {!! Html::script("js/base.js") !!}
     <!--- Ayudantes js (Funciones genericas para la interacion con javascript)  -->
     {!! Html::script("js/Helpers/HelperMessage.js") !!}
     {!! Html::script("js/Helpers/HelperForm.js") !!}
@@ -144,7 +145,7 @@
     {!! Html::script("js/Helpers/HelperForm.js") !!}
     {!! Html::script("js/Helpers/HelperServerPetition.js") !!}
 
-    {!! Html::script("js/base.js") !!}
+    
 
 
     <script type="text/javascript">

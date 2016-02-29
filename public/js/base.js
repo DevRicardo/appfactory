@@ -36,6 +36,70 @@ function searchBar(){
 
 
 
+/*
+*
+* Carga una lista con paginado y la renderiza en un elemento
+* que se le pase como parametro
+*
+* @param config  {route:'valor',pagenew:'valor',element:valor}
+*
+*-------------------------------------------------------------
+* element- este elemento que coresponde al id o clase donde se va 
+* a renrerizar el resultado de la consulta pr defecto esta formado
+* por la palabra list_ concatenandole el nombre del alias del router
+* y es una clase
+* ejemplo: list_projects
+*/
+
+function loadData(config)
+{
+    var defaults = {
+        route:'',
+        nextpage:'',
+        element:'.list_'
+    }
+
+    $.extend(defaults, config);
+
+    var objElement = $(defaults.element+defaults.route);
+    var page = "";
+    if(typeof defaults.nextpage != "undefined"){
+        page = "?page="+defaults.nextpage;
+    }
+
+    var request = HelperServerPetition.sendBasic({
+                               url:  baseUrl()+'/'+defaults.route+'/list'+page,
+                               type:  'GET',
+                               data:'' 
+                  }, objElement);
+
+    request.done(function(msj){
+        objElement.html(msj.vista);
+        HelperServerPetition.actionPreloader('hidden','indicador_carga');
+    });
+}
+
+
+
+function eventListenPaginate()
+{
+    $(document).on('click', '.pagination a', function (e) {
+        e.preventDefault();
+
+
+        var npage = $(this).attr('href').split("page=")[1];
+        var dataUrl = $(this).attr('href').split("/");
+        var controller = dataUrl[4];
+
+        
+        loadData({
+            route:   controller,
+            nextpage:npage
+        });
+        
+    });
+}
+
 
 
 
@@ -45,7 +109,17 @@ function searchBar(){
 */
 function main () {
 
+    /*
+    * Inicializa el campo de busqueda en el hedaer
+    */
 	searchBar();
+
+
+    /*
+    * Funcion principal que detecta las activaciones 
+    * de los pagonadores
+    */
+    eventListenPaginate();
 	
 }
 
