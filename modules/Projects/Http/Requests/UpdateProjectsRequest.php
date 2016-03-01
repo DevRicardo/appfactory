@@ -29,7 +29,6 @@ class UpdateProjectsRequest extends FormRequest {
 	{
 		return [
             'image' => 'mimes:jpeg,bmp,png',
-            'name' => 'required|alpha_dash|max:120|unique:projects',
             'description' => 'required|max:250',
             'categorie_id' => 'required|numeric'
         ];

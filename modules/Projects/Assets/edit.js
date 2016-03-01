@@ -3,6 +3,8 @@
 *  BLOQUE PARA LAS FUNCIONES DE ASIGNACION DE EVENTOS *
 *                                                     *
 ******************************************************/
+var objetPetition = HelperServerPetition;
+
 
 function eventUpdate()
 {
@@ -12,9 +14,9 @@ function eventUpdate()
 		event.preventDefault();
 		var objElement = this;
 		// validacion de campos 
-		if(HelperValidation.execute(objElement)){
-
-			HelperServerPetition.send(objElement,{
+		if(HelperValidation.execute(objElement)){			
+            //objetPetition.objForm = objElement;
+			objetPetition.send(objElement,{
 		    	success: successUpdate,
 		    	error:   errorUpdate
 		    });
@@ -71,13 +73,11 @@ function showAndHideImage()
  
 var successUpdate = function(data)
 {
-	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
-	HelperServerPetition.actionPreloader('hidden','indicador_carga');
+	
+	objetPetition.actionButtonSubmit('show');
+	objetPetition.actionPreloader('hidden','indicador_carga');
 	HelperMessage.displayNotyOn(data);
-	if(data.type == "success")
-	{
-        HelperForm.clean(HelperServerPetition.objForm);
-	}
+	
 	
 }
 

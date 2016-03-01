@@ -44,7 +44,7 @@ class ProjectsController extends Controller {
         $view = view('projects::list');
         //params at view       
 
-        $result['vista'] = $view->with("projects",$projects->paginate(1))->render();
+        $result['vista'] = $view->with("projects",$projects->paginate(4))->render();
 
         return response()->json($result); 
     }
@@ -132,6 +132,45 @@ class ProjectsController extends Controller {
     */
 	public function update(UpdateProjectsRequest $request, $id)
 	{
+
+        $resultMessage = null;
+        $this->files->setType(Files::IMAGE);
+        $is_succesfull = $this->files->upload($request,'image');
+        if( $is_succesfull || $is_succesfull == null )
+        {
+            try
+            {
+               DB::beginTransaction(); 
+               
+               unset($request['_token']);
+               unset($request['_method']);          
+               $project = $this->projectrepository->updateRich($request->all(),$id); 
+               if($is_succesfull != null)
+               {
+                   
+                   $image = $this->files->getNewName(); 
+                   $this->projectrepository->update(['image'=>$image],$id);
+
+
+               }
+               
+
+               DB::commit();
+
+               $resultMessage = $this->message->emit(Messages::SUCCESS,['Projects update succesfull']); 
+            
+            } catch (Exception $e) {
+               DB::rollBack(); 
+               $resultMessage = $this->message->emit(Messages::DANGER,['Error to the update project']); 
+            }          
+            
+        }
+        else
+        {
+            $resultMessage = $this->message->emit(Messages::DANGER,['Error to the update project']);
+        }
+                
+        return response()->json($resultMessage);
                      
 	}
 

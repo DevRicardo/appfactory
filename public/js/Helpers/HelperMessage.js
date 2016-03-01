@@ -19,9 +19,10 @@ var HelperMessage = {
 
 
 
-    showNoty: function(message,type){
+    showNoty: function(message,type,callback){
 
-    	var n = noty({
+      var config = {
+
         text: message,
         type: type,
         animation: {
@@ -32,8 +33,28 @@ var HelperMessage = {
                
             },
         dismissQueue: true,
-        timeout:3000   
-        });        
+        timeout:3000 
+
+      }
+
+      if(type == "confirm"){
+          config.buttons = [
+                {addClass: 'btn btn-primary', text: 'Ok', onClick: function($noty) {
+                    $noty.close();
+                     callback();                   
+                    
+                  }
+                },
+                {addClass: 'btn btn-danger', text: 'Cancel', onClick: function($noty) {
+                    $noty.close();
+                    HelperMessage.showNoty('Canceled','error');
+                  }
+                }
+          ]
+      }
+     
+
+    	var n = noty(config);        
 
     },
     
@@ -64,6 +85,13 @@ var HelperMessage = {
           result += ""+objMensajes[i]+"<br>";
        }
        return result;
+  },
+
+
+  showConfirm: function(){
+      HelperMessage.showNoty("Esta suguro de eliminar el project","confirm",function(){
+        HelperMessage.showNoty('Succesfull','success');
+      });  
   }
 
 

@@ -55,7 +55,7 @@
         <li><a class="dropdown-button" href="#!" data-activates="menu_personal">
         
         <div class="chip z-depth-1">
-            <img src="http://ofertas.rogersoto.com/images/avatar.png" alt="Contact Person">
+            <img src="#" alt="Contact Person">
             {{ Auth::user()->name }}
         </div>
 
@@ -64,7 +64,7 @@
       <ul class="side-nav" id="mobile-demo">
          <li>        
         <div class="chip z-depth-1">
-            <img title="{{ Auth::user()->name }}" src="http://ofertas.rogersoto.com/images/avatar.png" alt="{{ Auth::user()->name }}">
+            <img title="{{ Auth::user()->name }}" src="#" alt="{{ Auth::user()->name }}">
             {{ Auth::user()->name }}
         </div>
       </li>

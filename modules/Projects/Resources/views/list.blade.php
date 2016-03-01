@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col s12 m12 l12 " >
-                        <a class="waves-effect waves-light btn btn-small " style="width: 100%; margin-top:5px;">
+                        <a class="waves-effect waves-light btn btn-small delete" style="width: 100%; margin-top:5px;">
                           <i class="small material-icons">delete</i>
                           Delete
                       </a>  

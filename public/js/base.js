@@ -56,30 +56,43 @@ function loadData(config)
     var defaults = {
         route:'',
         nextpage:'',
-        element:'.list_'
+        element:'.list_',
+        callback:defaultLoad
     }
 
     $.extend(defaults, config);
+    var element = defaults.element+defaults.route;
 
-    var objElement = $(defaults.element+defaults.route);
-    var page = "";
-    if(typeof defaults.nextpage != "undefined"){
-        page = "?page="+defaults.nextpage;
+    if($(element).length > 0)
+    {        
+        var objElement = $(element);
+        var page = "";
+        if(typeof defaults.nextpage != "undefined"){
+            page = "?page="+defaults.nextpage;
+        }
+        
+        var request = HelperServerPetition.sendBasic({
+                                   url:  baseUrl()+'/'+defaults.route+'/list'+page,
+                                   type:  'GET',
+                                   data:'' 
+                      }, objElement);
+
+        request.done(function(msj){
+            
+            objElement.html(msj.vista);
+            HelperServerPetition.actionPreloader('hidden','indicador_carga');
+            //eventDelete();
+            defaults.callback();
+
+        });
+
     }
-
-    var request = HelperServerPetition.sendBasic({
-                               url:  baseUrl()+'/'+defaults.route+'/list'+page,
-                               type:  'GET',
-                               data:'' 
-                  }, objElement);
-
-    request.done(function(msj){
-        objElement.html(msj.vista);
-        HelperServerPetition.actionPreloader('hidden','indicador_carga');
-    });
 }
 
-
+function defaultLoad()
+{
+    console.log("default load");
+}
 
 function eventListenPaginate()
 {

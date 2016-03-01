@@ -85,10 +85,18 @@ class Files
     */ 
 	public function upload(Request $request, $campo , $destination = ""){
 		$file = $request->file($campo);
-		$nombre = $file->getClientOriginalName();
-		$extention = $file->getClientOriginalExtension();
-		$this->newName = $destination."".$this->generateNewName().".".$extention;
-		return Storage::disk('local')->put($this->newName, archive::get($file));
+		if($file != null)
+		{
+            $nombre = $file->getClientOriginalName();
+		    $extention = $file->getClientOriginalExtension();
+		    $this->newName = $destination."".$this->generateNewName().".".$extention;
+		    return Storage::disk('local')->put($this->newName, archive::get($file));
+		}
+		else
+		{
+			return $file;
+		}
+		
     }
     
 

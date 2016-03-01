@@ -16,7 +16,7 @@ var baseUrl =  function () {
 var HelperServerPetition = {
 	// body...
 
-    objForm: '',
+    objForm: {},
 
 	//url base del proyecto
 
@@ -27,7 +27,7 @@ var HelperServerPetition = {
      * @return: codigo html del preloader
      */
     actionPreloader: function(action, elementClass){
-
+        
         var progress = $(".progress");
         var element = $("."+elementClass);
 
@@ -60,10 +60,10 @@ var HelperServerPetition = {
 
 
     // accion que controla la habilitacion o no del boton de enviado de datos
-    actionButtonSubmit: function(objForm, action){
+    actionButtonSubmit: function(action){
         
-        // recorre el formulario buscando los imput de tipo submit y los inhabilita
-        objForm.find('input[type="submit"]').each(function(){
+        // recorre el formulario buscando los imput de tipo submit y los inhabilita        
+        HelperServerPetition.objForm.find('input[type="submit"]').each(function(){
             if(action == "show"){
                 $(this).removeAttr('disabled');
             }else{
@@ -83,8 +83,6 @@ var HelperServerPetition = {
     * Para configurar la url antempoga siempre baseUrl()+'/'+<< ruta >> 
     */
     sendBasic: function(config,objForm){
-        
-        this.objForm = objForm;
 
         var defaults = {
             url: '',
@@ -94,8 +92,8 @@ var HelperServerPetition = {
         }
 
         if(typeof objForm != "undefined")
-        {
-            defaults.beforeSend = this.callBackbeforeSend(objForm);
+        {   HelperServerPetition.objForm = objForm;
+            defaults.beforeSend = this.callBackPreloaderBeforeSend;
         }
  
         $.extend(defaults, config);
@@ -103,6 +101,7 @@ var HelperServerPetition = {
         var objResponse = $.ajax(defaults); 
         return objResponse;  
     },
+    
 	
 	
     // envia datos al servidor mediante ajax
@@ -117,7 +116,9 @@ var HelperServerPetition = {
 		var method = objCast.attr('method');
 		var rute = objCast.attr('action');
 		//var data = objCast.serialize();    
-        this.objForm = objCast;          
+        HelperServerPetition.objForm = objCast;  
+
+
         var formData = new FormData($(objForm)[0]);
 		var defaults = {
 		    url: rute,
@@ -131,7 +132,7 @@ var HelperServerPetition = {
             success: this.callBackSuccess,
             error: this.callBackError,
             complete:this.callBackComplete,
-            beforeSend:this.callBackbeforeSend(objForm)
+            beforeSend:this.callBackbeforeSend(HelperServerPetition.objForm)
 	    }
 	    /* Comprobamos que la configuracion este
         *  definida
@@ -141,6 +142,7 @@ var HelperServerPetition = {
             // defecto
             $.extend(defaults, config);
         }
+        
         // enviando datos 
 	    $.ajax(defaults);		
 
@@ -161,10 +163,19 @@ var HelperServerPetition = {
         
     },
     // funcion por defecto antes de enviar los datos
-    callBackbeforeSend: function(data, status, objXHR , objForm){        
+    callBackbeforeSend: function(data, status, objXHR , objForm){  
+              
         $('.indicador_carga').remove();
-        HelperServerPetition.actionButtonSubmit(this.objForm, 'hidden');
+        HelperServerPetition.actionButtonSubmit('hidden');
         this.objForm.prepend('<div class="indicador_carga" ></div>');
+        HelperServerPetition.actionPreloader('show','indicador_carga');
+    },
+
+    // funcion solo para mostrar el preloder mientras se completa la peticion
+    callBackPreloaderBeforeSend: function(data, status, objXHR){
+        
+        $('.indicador_carga').remove();
+        HelperServerPetition.objForm.prepend('<div class="indicador_carga" ></div>');
         HelperServerPetition.actionPreloader('show','indicador_carga');
     }
 

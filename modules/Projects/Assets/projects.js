@@ -44,7 +44,10 @@ eventCreate ();
 loadData({
 	route:   'projects',
 	nextpage:'1',
+	callback:eventDelete
 });
+
+
 
 
 
@@ -58,7 +61,7 @@ loadData({
 showAndHideImage();
 
 // evento para actualizar projecto
-eventUpdate()
+eventUpdate();
 
 
 
