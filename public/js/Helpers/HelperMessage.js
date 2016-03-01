@@ -19,7 +19,7 @@ var HelperMessage = {
 
 
 
-    showNoty: function(message,type,callback){
+    showNoty: function(message,type,callback,param){
 
       var config = {
 
@@ -41,7 +41,7 @@ var HelperMessage = {
           config.buttons = [
                 {addClass: 'btn btn-primary', text: 'Ok', onClick: function($noty) {
                     $noty.close();
-                     callback();                   
+                     callback(param);                   
                     
                   }
                 },
@@ -85,14 +85,8 @@ var HelperMessage = {
           result += ""+objMensajes[i]+"<br>";
        }
        return result;
-  },
-
-
-  showConfirm: function(){
-      HelperMessage.showNoty("Esta suguro de eliminar el project","confirm",function(){
-        HelperMessage.showNoty('Succesfull','success');
-      });  
-  }
+  } 
+ 
 
 
 

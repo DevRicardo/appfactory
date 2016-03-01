@@ -36,21 +36,17 @@ var HelperServerPetition = {
            element.remove();
         }else{
             if(action == "show"){
-
                 var response = this.sendBasic(
                     {
                          url:  baseUrl()+'/componet/preloader',
                         type:  'GET',
-                        data:  ''
-                                  
+                        data:  ''                                  
                     }
                 );
-                response.done(function(data){ 
-                    
+                response.done(function(data){                    
                     // agrega el componente que retorna la peticion 
                     // al elemento que se pasa como parametro                   
                     $("."+elementClass).html(data.component); 
-
                 });
             }else{
                 alert("No hay parametros");
@@ -60,17 +56,14 @@ var HelperServerPetition = {
 
 
     // accion que controla la habilitacion o no del boton de enviado de datos
-    actionButtonSubmit: function(action){
-        
+    actionButtonSubmit: function(action){        
         // recorre el formulario buscando los imput de tipo submit y los inhabilita        
         HelperServerPetition.objForm.find('input[type="submit"]').each(function(){
             if(action == "show"){
                 $(this).removeAttr('disabled');
             }else{
-                if(action == "hidden"){
-                    
-                  $(this).attr('disabled','disabled');
-                    
+                if(action == "hidden"){                    
+                  $(this).attr('disabled','disabled');                    
                 }
             }
         });
@@ -83,21 +76,17 @@ var HelperServerPetition = {
     * Para configurar la url antempoga siempre baseUrl()+'/'+<< ruta >> 
     */
     sendBasic: function(config,objForm){
-
         var defaults = {
             url: '',
             type: '',
             data: '',
             dataType: 'json'
         }
-
         if(typeof objForm != "undefined")
         {   HelperServerPetition.objForm = objForm;
             defaults.beforeSend = this.callBackPreloaderBeforeSend;
-        }
- 
-        $.extend(defaults, config);
-        
+        } 
+        $.extend(defaults, config);        
         var objResponse = $.ajax(defaults); 
         return objResponse;  
     },
@@ -109,16 +98,13 @@ var HelperServerPetition = {
     * formato del config = {url: , type:, async: , data: , dataType: ,success: , error:}
     * Para configurar la url antempoga siempre baseUrl()+'/'+<< ruta >> 
     */
-	send: function (objForm, config) {
-        
+	send: function (objForm, config) {        
 		// importando los datos del formulario        
         var objCast = $(objForm);
 		var method = objCast.attr('method');
 		var rute = objCast.attr('action');
 		//var data = objCast.serialize();    
         HelperServerPetition.objForm = objCast;  
-
-
         var formData = new FormData($(objForm)[0]);
 		var defaults = {
 		    url: rute,

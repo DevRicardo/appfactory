@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container as App;
 use App\Interfaces\RepositoryInterface;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
 * 
@@ -110,6 +111,12 @@ abstract class Repository
      */
     public function delete($id) {
         return $this->model->destroy($id);
+    }
+
+    public function softdelete($id)
+    {
+        $model = $this->model->find($id);
+        return $model->delete();
     }
 
     /**

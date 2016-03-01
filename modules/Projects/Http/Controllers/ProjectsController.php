@@ -18,23 +18,23 @@ class ProjectsController extends Controller {
     private $message;
     private $files;
 
-	public function __construct(ProjectRepository $projectRepo, Messages $message, Files $file)
-	{
+  public function __construct(ProjectRepository $projectRepo, Messages $message, Files $file)
+  {
         $this->projectrepository = $projectRepo;
         $this->message = $message;
         $this->files = $file;
-	}
-	
-	/**
+  }
+  
+  /**
     * Mustar el listado de todos los proyectos 
     */
-	public function index()
-	{
+  public function index()
+  {
        
        $view = view('projects::index');
 
         return $view;     
-	}
+  }
 
 
     public function listElements(Request $request)
@@ -54,23 +54,23 @@ class ProjectsController extends Controller {
     * muestra la vista para crear proyecto
     *
     */
-	public function create()
-	{
-		$categories = Categorie::ListForSelect();
+  public function create()
+  {
+    $categories = Categorie::ListForSelect();
 
         $view = view('projects::create');
         //params at view
         $view->with("categories",$categories);
 
         return $view;
-	}
+  }
 
 
     /**
     * Muestra el formulario para editar proyecto
     */
-	public function edit($id)
-	{
+  public function edit($id)
+  {
 
         $categories = Categorie::ListForSelect();
         $project = $this->projectrepository->find($id);
@@ -81,7 +81,7 @@ class ProjectsController extends Controller {
         $view->with('project', $project);
 
         return $view;
-	}
+  }
 
     /**
     * crea un nuevo proyecto
@@ -89,8 +89,8 @@ class ProjectsController extends Controller {
     * @param  CreateProjectsRequest  $data
     * @return json
     */ 
-	public function store(CreateProjectsRequest $request)
-	{   
+  public function store(CreateProjectsRequest $request)
+  {   
         $resultMessage = null;
         $this->files->setType(Files::IMAGE);
         $is_succesfull = $this->files->upload($request,'image');
@@ -119,9 +119,9 @@ class ProjectsController extends Controller {
         {
             $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create project']);
         }
-        		
+            
         return response()->json($resultMessage);
-	}
+  }
 
 
     /**
@@ -130,8 +130,8 @@ class ProjectsController extends Controller {
     * @param  UpdateProjectsRequest  $data
     * @return json
     */
-	public function update(UpdateProjectsRequest $request, $id)
-	{
+  public function update(UpdateProjectsRequest $request, $id)
+  {
 
         $resultMessage = null;
         $this->files->setType(Files::IMAGE);
@@ -172,16 +172,28 @@ class ProjectsController extends Controller {
                 
         return response()->json($resultMessage);
                      
-	}
+  }
 
     /**
     * Elimina un proyecto
     *
     * @param  integer  $id
     */
-	public function destroy($id)
-	{
+  public function destroy($id)
+  {
+      $resultMessage = null;
+      $result = $this->projectrepository->softdelete($id);   
+      if($result)
+      {
+          $resultMessage = $this->message->emit(Messages::SUCCESS,['Project deleted']); 
+      } 
+      else
+      {
+          $resultMessage = $this->message->emit(Messages::DANGER,['Project not deleted']); 
 
-	}
-	
+      }
+
+      return response()->json($resultMessage);
+  }
+  
 }

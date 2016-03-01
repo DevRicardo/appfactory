@@ -4,7 +4,7 @@
 
         <div class="col s12 m12 l4">
 
-            <div class="card hoverable" style="height:250px">
+            <div class="card hoverable" style="height:250px" id="_{!! $project->id !!}">
               <div class="card-image waves-effect waves-block waves-light" style="height: 100px;">
                  <img class="activator" src="{!! url('storage/'.$project->image) !!}">
               </div>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col s12 m12 l12 " >
-                        <a class="waves-effect waves-light btn btn-small delete" style="width: 100%; margin-top:5px;">
+                        <a class="waves-effect waves-light btn btn-small delete" data-id="{!! $project->id !!}" style="width: 100%; margin-top:5px;">
                           <i class="small material-icons">delete</i>
                           Delete
                       </a>  

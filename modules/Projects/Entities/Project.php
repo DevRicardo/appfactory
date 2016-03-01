@@ -1,14 +1,17 @@
 <?php namespace Modules\Projects\Entities;
    
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model {
 
-
+     use SoftDeletes; 
     /*
     * Array con los campos que se pueden guardar de forma 
     * masiba
     */
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
     
         'image',

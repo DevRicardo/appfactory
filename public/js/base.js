@@ -107,7 +107,8 @@ function eventListenPaginate()
         
         loadData({
             route:   controller,
-            nextpage:npage
+            nextpage:npage,
+            callback:eventDelete
         });
         
     });
