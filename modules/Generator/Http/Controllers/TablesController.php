@@ -2,7 +2,7 @@
 
 use Pingpong\Modules\Routing\Controller;
 
-class GeneratorController extends Controller {
+class TablesController extends Controller {
 	
 	public function index($projects)
 	{

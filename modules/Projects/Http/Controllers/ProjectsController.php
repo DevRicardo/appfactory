@@ -43,7 +43,7 @@ class ProjectsController extends Controller {
         $projects = $this->projectrepository; 
         $view = view('projects::list');
         //params at view       
-
+        
         $result['vista'] = $view->with("projects",$projects->paginate(4))->render();
 
         return response()->json($result); 

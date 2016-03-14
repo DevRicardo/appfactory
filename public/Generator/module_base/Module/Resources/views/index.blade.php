@@ -7,8 +7,8 @@
 @section('content')
 
  
- {!! $projects !!}
-<div class="list_generator">
+ 
+<div class="list_$_table_$">
     <div class="indicador_carga"></div>      
    
 </div>
@@ -18,6 +18,6 @@
 
 @section('scripts')
 
-     @include('generator::partial.script')
+     @include('$_table_$::partial.script')
 
 @stop
