@@ -36,6 +36,11 @@ class Project extends Model {
     	return $this->belongsToMany('Modules\Projects\Entities\State')->withPivot('state_start', 'state_end');
     }
 
+    public function tables()
+    {
+        return $this->hasMany('Modules\Projects\Entities\Table')
+    }
+
 
 
 

@@ -61,6 +61,13 @@ class ComponetViewController extends Controller
     	return response()->json($result);
     }
 
+    //Componente que muestra una fila para añadir campos en una tabla
+    public function campoTableBd($pos)
+    {
+        $result['component'] = view('partials.components.campotablebd')->render();
+        return response()->json($result);
+    }
+
 
      
 
