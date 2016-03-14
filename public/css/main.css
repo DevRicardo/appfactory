@@ -1,0 +1,10 @@
+.helper-error{
+    color:red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.helper-error ul{
+    margin: 0px;
+}
