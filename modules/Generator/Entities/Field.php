@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Table extends Model {
+class Field extends Model {
 
     use SoftDeletes; 
     /*
@@ -15,12 +15,13 @@ class Table extends Model {
     protected $fillable = [
     
         'name',
-        'description',
-        'project_id'
+        'type',
+        'length',
+        'html_component',
+        'attributes',
+        'validations',
+        'table_id'
 
     ];
-
-    
-
 
 }

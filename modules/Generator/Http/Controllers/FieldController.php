@@ -2,9 +2,12 @@
 
 use Pingpong\Modules\Routing\Controller;
 
-class GeneratorController extends Controller {
+class FieldController extends Controller {
 	
-	
+	public function index()
+	{
+		
+	}
 
 
 

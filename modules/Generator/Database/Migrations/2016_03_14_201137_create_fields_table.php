@@ -15,7 +15,7 @@ class CreateTablesTable extends Migration {
      */
     public function up()
     {
-        Schema::create('tables', function(Blueprint $table)
+        Schema::create('fields', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('name',50);
@@ -24,7 +24,7 @@ class CreateTablesTable extends Migration {
             $table->string('html_component');
             $table->string('attributes');
             $table->string('validations');
-            $table->integer('project_id')->unsigned();
+            $table->integer('table_id')->unsigned();
             $table->softDeletes(); 
             $table->timestamps();
         });
@@ -37,7 +37,7 @@ class CreateTablesTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('tables');
+        Schema::drop('fields');
     }
 
 }

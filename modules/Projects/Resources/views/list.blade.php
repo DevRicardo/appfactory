@@ -24,7 +24,7 @@
                 
                 <div class="row">
                     <div class="col s12 m12 l12 " >
-                        <a href="{!! url('/generator/'.$project->id) !!}" class="waves-effect waves-light btn btn-small " style="width: 100%; margin-top:5px;">
+                        <a href="{!! url('/generator/'.$project->id.'/'.$project->name) !!}" class="waves-effect waves-light btn btn-small " style="width: 100%; margin-top:5px;">
                            <i class="small material-icons">extension</i> 
                            Construct
                       </a>  
