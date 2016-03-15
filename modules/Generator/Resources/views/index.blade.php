@@ -31,15 +31,20 @@
   </div>
   <div class="chip teal lighten-4 z-depth-1">
        <a href="#">
+<<<<<<< HEAD
            Tables for
            <i class="material-icons">keyboard_arrow_right</i>
            <strong>{!! $projects_name !!}</strong>
+=======
+           List Tables 
+>>>>>>> 6be6f484d0e7c5bfdaf798fefd38d52f74f0d3c2
        </a>
        
   </div>
   
 </div> 
 <br>
+<<<<<<< HEAD
 
     
     <div class="col s12 m12 l12 card-panel z-depth-1 grey lighten-3" >
@@ -100,6 +105,16 @@
     </div> 
    
   
+=======
+<div class="row">
+    
+    <div class="col s12 card-panel z-depth-1 grey lighten-3" >
+    	dfsdfsdfsd
+    </div> 
+   
+  </div>
+
+>>>>>>> 6be6f484d0e7c5bfdaf798fefd38d52f74f0d3c2
  
 <div class="list_generator">
     <div class="indicador_carga"></div>      
