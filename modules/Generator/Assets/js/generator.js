@@ -33,6 +33,8 @@ function main () {
 // evento para el boton con class crear
 /*eventCreate ();*/
 
+//createField();
+
 
 
 

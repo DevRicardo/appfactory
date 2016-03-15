@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Response;
 
@@ -29,14 +28,14 @@ class ComponetViewController extends Controller
     * permite seleccionar el componente
     * @param: component -- nombre del componente a mostrar
     */
-    public function select($component)
+    public function select(Request $request, $component)
     {
     	$function = $component;
     	//dd(__NAMESPACE__ .'\\'.$this->className.'\\'.$function);
         if(method_exists(__NAMESPACE__ .'\\'.$this->className, $function))
         {
         	$component = [__NAMESPACE__ .'\\'.$this->className,$function];
-            return call_user_func($component);   
+            return call_user_func($component, $request);   
         }else{
         	$result['component'] = view('errors.404')->render();
     	    return response()->json($result);
@@ -62,9 +61,10 @@ class ComponetViewController extends Controller
     }
 
     //Componente que muestra una fila para añadir campos en una tabla
-    public function campoTableBd($pos)
+    public function campoTableBd(Request $request)
     {
-        $result['component'] = view('partials.components.campotablebd')->render();
+        $pos = $request->size;
+        $result['component'] = view('partials.components.campotablebd')->with(['pos'=>$pos])->render();
         return response()->json($result);
     }
 
