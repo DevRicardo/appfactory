@@ -38,7 +38,7 @@ class Project extends Model {
 
     public function tables()
     {
-        return $this->hasMany('Modules\Projects\Entities\Table')
+        return $this->hasMany('Modules\Projects\Entities\Table');
     }
 
 
