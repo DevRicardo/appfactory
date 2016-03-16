@@ -1,0 +1,15 @@
+{
+    "name": "$_model_plural_$",
+    "alias": "$_table_$",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\$_model_plural_$\\Providers\\$_model_plural_$ServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

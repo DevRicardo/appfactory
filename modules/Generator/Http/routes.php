@@ -8,8 +8,15 @@ Route::group(['middleware' => 'web', 'prefix' => 'generator', 'namespace' => 'Mo
 	 Route::get('/create/{projects}/{name}', 'TableController@create');
 	 Route::post('/', 'TableController@store');
 
-     Route::get('/fields/{table}/{project_name}/{project}', 'FieldController@index');
+     Route::get('/fields/{idtable}/{table}/{project_name}/{project}', 'FieldController@index');
      Route::post('/fields', 'FieldController@store');
+
+
+
+     Route::get('/createdir', 'GeneratorController@createdir');
+     Route::get('/copybasemodule', 'GeneratorController@copybasemodule');
+     Route::get('/createrepository', 'GeneratorController@createrepository');
+     
 
 
 });

@@ -12,7 +12,7 @@ class TableController extends Controller {
 	
 	public function index($projects, $name)
 	{
-		$tables = Table::all();		
+		$tables = Table::where('project_id',$projects)->get();		
 		$view = view('generator::index');
 		$view->with([
 			'projects'=>$projects,

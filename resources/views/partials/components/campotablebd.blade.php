@@ -1,5 +1,5 @@
     
-      <div class="row row_field" >
+      <div class="row row_field"  >
 
         <div class="input-field col s2">          
           <input id="name_{!! $pos !!}" name="row_{!! $pos !!}[]" type="text" class="validate">
@@ -34,14 +34,18 @@
           <label for="component">Component</label>
         </div>
 
-        <div class="input-field col s2">
-          <input id="attributes_{!! $pos !!}" name="row_{!! $pos !!}[]" type="text" class="validate">
-          <label for="attributes">Attributes</label>
+        <div class="input-field col s1">
+          <input id="attributes_{!! $pos !!}" name="row_{!! $pos !!}[]" type="hidden" class="validate">
+          <a href="#" onclick="$('#modal1').openModal();" class="waves-effect waves-light" title="Attributes">
+        <i  class="small material-icons">list</i>
+        </a>
         </div>
 
-        <div class="input-field col s2">
-          <input name="row_{!! $pos !!}[]" id="validations_{!! $pos !!}" type="tel" class="validate">
-          <label for="validations">Validations</label>
+        <div class="input-field col s1">
+          <input name="row_{!! $pos !!}[]" id="validations_{!! $pos !!}" type="hidden" class="validate">
+           <a href="#" onclick="$('#modal1').openModal();" class="waves-effect waves-light" title="Validations">
+        <i  class="small material-icons">lock_outline</i>
+        </a>
         </div>
 
       </div>

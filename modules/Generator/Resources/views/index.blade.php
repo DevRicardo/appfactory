@@ -67,13 +67,13 @@
             <td></td>
             <td> 
               <!-- Dropdown Trigger -->
-              <a class='dropdown-button btn' href='#' data-activates='dropdown0'>    
+              <a class='dropdown-button btn' href='#' data-activates='dropdown{!! $count !!}'>    
                   <i class="material-icons tyni left">dashboard</i> 
                   Actions 
               </a>
 
               <!-- Dropdown Structure -->
-              <ul id='dropdown0' class='dropdown-content'>
+              <ul id='dropdown{!! $count !!}' class='dropdown-content'>
                 <li>
                   <a href="{!! url('/generator/'.$value->name.'/edit') !!}">
                     <i  class="material-icons tyni left">create</i>  
@@ -82,7 +82,7 @@
                 </li>
 
                 <li>
-                  <a href="{!! url('/generator/fields/'.$value->name.'/'.$projects_name.'/'.$projects) !!}">
+                  <a href="{!! url('/generator/fields/'.$value->id.'/'.$value->name.'/'.$projects_name.'/'.$projects) !!}">
                     <i class="material-icons tyni left">add</i> 
                     Fields   
                   </a>
@@ -92,6 +92,13 @@
                   <a href="#!">
                     <i class="material-icons tyni left">web</i> 
                     Form   
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#!" onclick="startModule({!! $projects !!},{!! $value->id !!}, '{!! $value->name !!}')">
+                    <i class="material-icons tyni left">build</i> 
+                    Build   
                   </a>
                 </li>
                 <li>
@@ -108,6 +115,10 @@
           
         </tbody>
       </table>
+
+      <div class="progres_create col m12 s12 l12" >
+        
+      </div>
     </div> 
    
 
