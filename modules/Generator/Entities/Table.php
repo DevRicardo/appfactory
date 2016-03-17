@@ -15,11 +15,7 @@ class Table extends Model {
     protected $fillable = [
     
         'name',
-        'type',
-        'length',
-        'html_component',
-        'attributes',
-        'validations',
+        'description',
         'project_id'
 
     ];

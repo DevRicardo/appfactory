@@ -5,8 +5,24 @@ use App\Tools\Messages;
 use Response;
 
 trait TraitPluralizeText
-  {
-      $plural = array(
+{
+  
+  private $plural;
+  private $singular;
+  private $irregular;
+  private $uncountable;
+
+  public function __construct(){
+
+
+  
+}
+    
+
+    public function init()
+    {
+
+    $this->plural = [
           '/(quiz)$/i'               => "$1zes",
           '/^(ox)$/i'                => "$1en",
           '/([m|l])ouse$/i'          => "$1ice",
@@ -26,9 +42,9 @@ trait TraitPluralizeText
           '/(us)$/i'                 => "$1es",
           '/s$/i'                    => "s",
           '/$/'                      => "s"
-      );
-      
-      $singular = array(
+      ];
+
+      $this->singular = [
           '/(quiz)zes$/i'             => "$1",
           '/(matr)ices$/i'            => "$1ix",
           '/(vert|ind)ices$/i'        => "$1ex",
@@ -57,9 +73,9 @@ trait TraitPluralizeText
           '/(corpse)s$/i'             => "$1",
           '/(us)es$/i'                => "$1",
           '/s$/i'                     => ""
-      );
+      ];
       
-      $irregular = array(
+      $this->irregular = [
           'move'   => 'moves',
           'foot'   => 'feet',
           'goose'  => 'geese',
@@ -69,9 +85,9 @@ trait TraitPluralizeText
           'tooth'  => 'teeth',
           'person' => 'people',
           'valve'  => 'valves'
-      );
+      ];
       
-      $uncountable = array( 
+      $this->uncountable = [
           'sheep', 
           'fish',
           'deer',
@@ -81,17 +97,22 @@ trait TraitPluralizeText
           'rice',
           'information',
           'equipment'
-      );
+      ];
+      
+    }
+      
+      
       
       public function pluralize( $string ) 
       {
+           $this->init();
           // save some time in the case that singular and plural are the same
           if ( in_array( strtolower( $string ), $this->uncountable ) )
               return $string;
               
-      
+          
           // check for irregular singular forms
-          foreach ( $this->$irregular as $pattern => $result )
+          foreach ( $this->irregular as $pattern => $result )
           {
               $pattern = '/' . $pattern . '$/i';
               
@@ -100,7 +121,7 @@ trait TraitPluralizeText
           }
           
           // check for matches using regular expressions
-          foreach ( $this->$plural as $pattern => $result )
+          foreach ( $this->plural as $pattern => $result )
           {
               if ( preg_match( $pattern, $string ) )
                   return preg_replace( $pattern, $result, $string );
@@ -109,14 +130,14 @@ trait TraitPluralizeText
           return $string;
       }
       
-      public static function singularize( $string )
+      public function singularize( $string )
       {
           // save some time in the case that singular and plural are the same
-          if ( in_array( strtolower( $string ), $this->$uncountable ) )
+          if ( in_array( strtolower( $string ), $this->uncountable ) )
               return $string;
   
           // check for irregular plural forms
-          foreach ( $this->$irregular as $result => $pattern )
+          foreach ( $this->irregular as $result => $pattern )
           {
               $pattern = '/' . $pattern . '$/i';
               
@@ -125,7 +146,7 @@ trait TraitPluralizeText
           }
           
           // check for matches using regular expressions
-          foreach ( $this->$singular as $pattern => $result )
+          foreach ( $this->singular as $pattern => $result )
           {
               if ( preg_match( $pattern, $string ) )
                   return preg_replace( $pattern, $result, $string );
@@ -134,7 +155,7 @@ trait TraitPluralizeText
           return $string;
       }
       
-      public static function pluralize_if($count, $string)
+      public  function pluralize_if($count, $string)
       {
           if ($count == 1)
               return "1 $string";
