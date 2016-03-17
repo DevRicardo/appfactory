@@ -86,14 +86,69 @@ class GeneratorController extends Controller {
 			# code...
 			$file_contents = str_replace(''.$key.'',''.$value.'',$file_contents);
 			//echo $key."<br>";
-		}
-		
-        
+		}        
 
 		file_put_contents($path_to_file,$file_contents);
 
-    	return var_dump(is_file($newRepo));
-    	//print_r($repoactual);
+    	if(is_file($newRepo))
+    	{
+    		return json_encode(["result"=>"<p>Creando repository <i class='green-text small material-icons'>done</i></p>"]);
+    	}else
+    	{
+    		return json_encode(["result"=>"<p>Creando repository <i class='red-text  small material-icons'>report_problem</i></p>"]);
+    	}
+    	
+    }
+
+
+    public function createprovider(Request $request)
+    {
+    	# code...
+    	$dir_module = $this->base_dir."".$request->id;
+    	$this->constant = $this->generateConstant($request->name);
+
+    	$proviactual = $dir_module."/".ucwords($request->name)."/Providers/ProjectsServiceProvider.php";
+    	$newProvi = $dir_module."/".ucwords($request->name)."/Providers/".$this->constant['_model_plural_']."ServiceProvider.php";
+
+    	
+
+    	 // renombrando repositirio
+    	rename($proviactual, $newProvi);
+
+    	$path_to_file = $newProvi;
+		$file_contents = file_get_contents($path_to_file);
+		
+
+		foreach ($this->constant as $key => $value) {
+			# code...
+			$file_contents = str_replace(''.$key.'',''.$value.'',$file_contents);
+			//echo $key."<br>";
+		}        
+
+		file_put_contents($path_to_file,$file_contents);
+
+    	if(is_file($newProvi))
+    	{
+    		return json_encode(["result"=>"<p>Crenado providers<i class='green-text small material-icons'>done</i></p>"]);
+    	}else
+    	{
+    		return json_encode(["result"=>"<p>Creando providers <i class='red-text  small material-icons'>report_problem</i></p>"]);
+    	}
+    }
+
+
+
+    public function createrequest(Request $request)
+    {
+    	$dir_module = $this->base_dir."".$request->id;
+    	$this->constant = $this->generateConstant($request->name);
+
+    	$proviactual = $dir_module."/".ucwords($request->name)."/Providers/ProjectsServiceProvider.php";
+    	$newProvi = $dir_module."/".ucwords($request->name)."/Providers/".$this->constant['_model_plural_']."ServiceProvider.php";
+
+    	$proviactual = $dir_module."/".ucwords($request->name)."/Providers/ProjectsServiceProvider.php";
+    	$newProvi = $dir_module."/".ucwords($request->name)."/Providers/".$this->constant['_model_plural_']."ServiceProvider.php";
+
     }
 
 

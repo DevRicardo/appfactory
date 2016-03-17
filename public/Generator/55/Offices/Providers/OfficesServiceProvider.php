@@ -1,8 +1,8 @@
-<?php namespace Modules\_model_plural_\Providers;
+<?php namespace Modules\Offices\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class _model_plural_ServiceProvider extends ServiceProvider {
+class OfficesServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -41,10 +41,10 @@ class _model_plural_ServiceProvider extends ServiceProvider {
 	protected function registerConfig()
 	{
 		$this->publishes([
-		    __DIR__.'/../Config/config.php' => config_path('_table_.php'),
+		    __DIR__.'/../Config/config.php' => config_path('offices.php'),
 		]);
 		$this->mergeConfigFrom(
-		    __DIR__.'/../Config/config.php', '_table_'
+		    __DIR__.'/../Config/config.php', 'offices'
 		);
 	}
 
@@ -55,7 +55,7 @@ class _model_plural_ServiceProvider extends ServiceProvider {
 	 */
 	public function registerViews()
 	{
-		$viewPath = base_path('resources/views/modules/_table_');
+		$viewPath = base_path('resources/views/modules/offices');
 
 		$sourcePath = __DIR__.'/../Resources/views';
 
@@ -64,8 +64,8 @@ class _model_plural_ServiceProvider extends ServiceProvider {
 		]);
 
 		$this->loadViewsFrom(array_merge(array_map(function ($path) {
-			return $path . '/modules/_table_';
-		}, \Config::get('view.paths')), [$sourcePath]), '_table_');
+			return $path . '/modules/offices';
+		}, \Config::get('view.paths')), [$sourcePath]), 'offices');
 	}
 
 	/**
@@ -75,12 +75,12 @@ class _model_plural_ServiceProvider extends ServiceProvider {
 	 */
 	public function registerTranslations()
 	{
-		$langPath = base_path('resources/lang/modules/_table_');
+		$langPath = base_path('resources/lang/modules/offices');
 
 		if (is_dir($langPath)) {
-			$this->loadTranslationsFrom($langPath, '_table_');
+			$this->loadTranslationsFrom($langPath, 'offices');
 		} else {
-			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', '_table_');
+			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'offices');
 		}
 	}
 
