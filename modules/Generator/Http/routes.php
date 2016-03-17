@@ -16,6 +16,7 @@ Route::group(['middleware' => 'web', 'prefix' => 'generator', 'namespace' => 'Mo
      Route::get('/createdir', 'GeneratorController@createdir');
      Route::get('/copybasemodule', 'GeneratorController@copybasemodule');
      Route::get('/createrepository', 'GeneratorController@createrepository');
+     Route::get('/createprovider', 'GeneratorController@createprovider');
      
 
 

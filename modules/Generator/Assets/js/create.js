@@ -145,8 +145,31 @@ function addValueModalAttr () {
         response.done(function(data){                    
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
+       
+           $(".progres_create").append(data.result);
+           createprovider(project,nametable)
+           
 
-           //$(".progres_create").append(data.result);
+        })  
+   }
+
+
+
+
+   function createprovider(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createprovider',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
            
 
         })  
