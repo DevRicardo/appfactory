@@ -2,7 +2,7 @@
 namespace Modules\Books\Repositories;
 
 use App\Repositories\Repository;
-use Modules\Books\Entities\Project;
+use Modules\Books\Entities\Book;
 use Schema;
 use DB;
 use Illuminate\Support\Facades\Request;
