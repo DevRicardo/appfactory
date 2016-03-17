@@ -42,7 +42,7 @@ eventCreate ();
 *                                       *
 *****************************************/
 loadData({
-	route:   '$_table_$',
+	route:   'books',
 	nextpage:'1',
 	callback:eventDelete
 });

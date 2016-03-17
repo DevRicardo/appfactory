@@ -1,12 +1,12 @@
-<?php namespace Modules\$_model_plural_$\Http\Requests;
+<?php namespace Modules\_model_plural_\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\$_model_plural_$\Entities\$_model_$;
+use Modules\_model_plural_\Entities\_model_;
 use App\Traits\TraitRequest;
 
 
 
-class Create$_model_plural$Request extends FormRequest {
+class Create_model_plural_Request extends FormRequest {
 
     use TraitRequest;
 
@@ -30,7 +30,7 @@ class Create$_model_plural$Request extends FormRequest {
 	public function rules()
 	{
 		return [
-		    $_rules_$
+		    _rules_
         ];
 	} 
 

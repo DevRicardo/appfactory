@@ -26,7 +26,7 @@ function eventDelete()
 function destroy(id)
 {
     var response = HelperServerPetition.sendBasic({
-				    	url:'$_table_$/'+id,
+				    	url:'_table_/'+id,
 				    	type:'DELETE',
 				    	data:''
                    });

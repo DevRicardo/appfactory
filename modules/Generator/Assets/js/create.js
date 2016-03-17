@@ -170,8 +170,160 @@ function addValueModalAttr () {
             // al elemento que se pasa como parametro
 
            $(".progres_create").append(data.result);
+           createrequest(project,nametable);
+
+        })  
+   }
+
+
+
+   function createrequest(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createrequest',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createroutes(project,nametable)
+
+        })  
+   }
+
+
+   function createroutes(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createroutes',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createcontoller(project,nametable)
            
 
         })  
    }
+
+
+
+   function createcontoller(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createcontoller',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createmodel(project,nametable)
+           
+
+        })  
+   }
+
+
+
+    function createmodel(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createmodel',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createconfig(project,nametable)
+           
+
+        })  
+   }
+
+
+
+
+    function createconfig(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createconfig',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createjs(project,nametable)
+
+        })  
+   }
+
+
+
+       function createjs(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createjs',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createview(project,nametable)
+           
+
+        })  
+   }
+
+
+
+          function createview(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createview',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           
+
+        })  
+   }
+
 

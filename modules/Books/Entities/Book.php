@@ -1,9 +1,9 @@
-<?php namespace Modules\$_model_plural_$\Entities;
+<?php namespace Modules\Books\Entities;
    
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class $_model_$ extends Model {
+class Book extends Model {
 
      use SoftDeletes; 
     /*
@@ -14,7 +14,7 @@ class $_model_$ extends Model {
 
     protected $fillable = [
     
-        $_fields_db_$
+        'titulo','autor','etert',
 
     ];
 

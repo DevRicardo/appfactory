@@ -1,14 +1,16 @@
-<?php namespace Modules\$_model_plural_$\Http\Requests;
+<?php namespace Modules\Books\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Modules\$_model_plural_$\Entities\$_model_$;
+use Modules\Books\Entities\Book;
 use App\Traits\TraitRequest;
 
 
-class Update$_model_plural_$Request extends FormRequest {
 
+class CreateBooksRequest extends FormRequest {
 
-	use TraitRequest;
+    use TraitRequest;
+
+    
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -28,8 +30,10 @@ class Update$_model_plural_$Request extends FormRequest {
 	public function rules()
 	{
 		return [
-            $_rules_$
+		    _rules_
         ];
-	}
+	} 
+
+
 
 }

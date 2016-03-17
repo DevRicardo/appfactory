@@ -1,36 +1,36 @@
-<?php namespace Modules\$_model_plural_$\Http\Controllers;
+<?php namespace Modules\_model_plural_\Http\Controllers;
 
 use Pingpong\Modules\Routing\Controller;
-use Modules\$_model_plural_$\Http\Requests\Create$_model_plural_$Request;
-use Modules\$_model_plural_$\Http\Requests\Update$_model_plural_$Request;
-use Modules\$_model_plural_$\Repositories\$_model_$Repository;
-use Modules\$_model_plural_$\Entities\$_model_$;
+use Modules\_model_plural_\Http\Requests\Create_model_plural_Request;
+use Modules\_model_plural_\Http\Requests\Update_model_plural_Request;
+use Modules\_model_plural_\Repositories\_model_Repository;
+use Modules\_model_plural_\Entities\_model_;
 use Illuminate\Http\Request;
 use App\Tools\Messages;
 use App\Tools\Files;
 use Response;
 use DB;
 
-class $_model_plural_$Controller extends Controller {
+class _model_plural_Controller extends Controller {
 
-    private $$_object_$repository;
+    private $_object_repository;
     private $message;
     private $files;
 
-  public function __construct($_model_$Repository $$_object_$Repo, Messages $message, Files $file)
+  public function __construct(_model_Repository $_object_Repo, Messages $message, Files $file)
   {
-        $this->$_object_$repository = $$_object_$Repo;
+        $this->_object_repository = $_object_Repo;
         $this->message = $message;
         $this->files = $file;
   }
   
   /**
-    * Mustar el listado de todos los $_table_$ 
+    * Mustar el listado de todos los _table_ 
     */
   public function index()
   {
        
-       $view = view('$_table_$::index');
+       $view = view('_table_::index');
 
         return $view;     
   }
@@ -39,24 +39,24 @@ class $_model_plural_$Controller extends Controller {
     public function listElements(Request $request)
     {
         
-        $$_object_plural_$ = $this->$_object_$repository; 
-        $view = view('$_object_plural_$::list');
+        $_object_plural_ = $this->_object_repository; 
+        $view = view('_object_plural_::list');
         //params at view       
         
-        $result['vista'] = $view->with("$_object_plural_$",$$_object_plural_$->paginate(4))->render();
+        $result['vista'] = $view->with("_object_plural_",$_object_plural_->paginate(4))->render();
 
         return response()->json($result); 
     }
 
 
     /**
-    * muestra la vista para crear $_object_$
+    * muestra la vista para crear _object_
     *
     */
   public function create()
   {
     
-      $view = view('$_object_plural_$::create');
+      $view = view('_object_plural_::create');
       //params at view
       //$view->with("categories",$categories);
 
@@ -73,9 +73,9 @@ class $_model_plural_$Controller extends Controller {
         
         $project = $this->projectrepository->find($id);
 
-        $view = view('$_object_plural_$::edit');
+        $view = view('_object_plural_::edit');
         //params at view
-        $view->with('$_object_$', $project);
+        $view->with('_object_', $project);
 
         return $view;
   }
@@ -86,7 +86,7 @@ class $_model_plural_$Controller extends Controller {
     * @param  CreateProjectsRequest  $data
     * @return json
     */ 
-  public function store(Create$_model_plural_$Request $request)
+  public function store(Create_model_plural_Request $request)
   {   
       $resultMessage = null;
        
@@ -95,15 +95,15 @@ class $_model_plural_$Controller extends Controller {
            DB::beginTransaction(); 
            
                       
-           $$_object_$ = $this->$_object_$repository->create($request->all()); 
+           $_object_ = $this->_object_repository->create($request->all()); 
           
            DB::commit();
 
-           $resultMessage = $this->message->emit(Messages::SUCCESS,['$_model_plural_$ create succesfull']); 
+           $resultMessage = $this->message->emit(Messages::SUCCESS,['_model_plural_ create succesfull']); 
         
         } catch (Exception $e) {
            DB::rollBack(); 
-           $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create $_object_$']); 
+           $resultMessage = $this->message->emit(Messages::DANGER,['Error to the create _object_']); 
         }          
             
         
@@ -113,12 +113,12 @@ class $_model_plural_$Controller extends Controller {
 
 
     /**
-    * Actualiza un $_object_plural_$
+    * Actualiza un _object_plural_
     *
-    * @param  Update$_model_plural_$Request  $data
+    * @param  Update_model_plural_Request  $data
     * @return json
     */
-  public function update(Update$_model_plural_$Request $request, $id)
+  public function update(Update_model_plural_Request $request, $id)
   {
 
       $resultMessage = null;
@@ -129,16 +129,16 @@ class $_model_plural_$Controller extends Controller {
          
          unset($request['_token']);
          unset($request['_method']);          
-         $$_object_$ = $this->$_object_$repository->updateRich($request->all(),$id); 
+         $_object_ = $this->_object_repository->updateRich($request->all(),$id); 
                       
 
          DB::commit();
 
-         $resultMessage = $this->message->emit(Messages::SUCCESS,['$_model_plural_$ update succesfull']); 
+         $resultMessage = $this->message->emit(Messages::SUCCESS,['_model_plural_ update succesfull']); 
       
       } catch (Exception $e) {
          DB::rollBack(); 
-         $resultMessage = $this->message->emit(Messages::DANGER,['Error to the update $_object_$']); 
+         $resultMessage = $this->message->emit(Messages::DANGER,['Error to the update _object_']); 
       }          
             
         
@@ -148,21 +148,21 @@ class $_model_plural_$Controller extends Controller {
   }
 
     /**
-    * Elimina un $_object_plural_$
+    * Elimina un _object_plural_
     *
     * @param  integer  $id
     */
   public function destroy($id)
   {
       $resultMessage = null;
-      $result = $this->$_object_$repository->softdelete($id);   
+      $result = $this->_object_repository->softdelete($id);   
       if($result)
       {
-          $resultMessage = $this->message->emit(Messages::SUCCESS,['$_object_$ deleted']); 
+          $resultMessage = $this->message->emit(Messages::SUCCESS,['_object_ deleted']); 
       } 
       else
       {
-          $resultMessage = $this->message->emit(Messages::DANGER,['$_object_$ not deleted']); 
+          $resultMessage = $this->message->emit(Messages::DANGER,['_object_ not deleted']); 
 
       }
 

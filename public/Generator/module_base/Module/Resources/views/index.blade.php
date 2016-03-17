@@ -8,7 +8,7 @@
 
  
  
-<div class="list_$_table_$">
+<div class="list__table_">
     <div class="indicador_carga"></div>      
    
 </div>
@@ -18,6 +18,6 @@
 
 @section('scripts')
 
-     @include('$_table_$::partial.script')
+     @include('_table_::partial.script')
 
 @stop

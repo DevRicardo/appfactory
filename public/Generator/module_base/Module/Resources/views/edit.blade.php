@@ -9,14 +9,14 @@
 <div class="col s12 m12 l12">
 <br>
   <div class="chip teal lighten-4 z-depth-1 hoverable">
-        <a href="{!! url('/$_table_$') !!}">
+        <a href="{!! url('/_table_') !!}">
             Projects 
             <i class="material-icons">keyboard_arrow_right</i>
         </a>
         
   </div>
   <div class="chip teal lighten-4 z-depth-1">
-       <a href="{!! url('/$_table_$/create') !!}">
+       <a href="{!! url('/_table_/create') !!}">
            Edit 
        </a>
        
@@ -31,10 +31,10 @@
     
   <div class="row">
     
-    {!! Form::model($$_object_$, ['url'=>'$_table_$/'.$$_object_$->id, 'method'=>'PUT', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 update','name'=>'update_$_table_$','enctype'=>'multipart/form-data']) !!}
+    {!! Form::model($_object_, ['url'=>'_table_/'.$_object_->id, 'method'=>'PUT', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 update','name'=>'update__table_','enctype'=>'multipart/form-data']) !!}
     
    
-    @include('$_table_$::fields')
+    @include('_table_::fields')
    
 
     <div class="input-field col s6" style="margin-bottom: 18px;">
@@ -50,7 +50,7 @@
 
 @section('scripts')
 
-     @include('$_table_$::partial.script')
+     @include('_table_::partial.script')
     
      <script type="text/javascript">
        
