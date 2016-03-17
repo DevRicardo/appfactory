@@ -1,8 +1,8 @@
-<?php namespace Modules\Offices\Providers;
+<?php namespace Modules\Books\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class OfficesServiceProvider extends ServiceProvider {
+class BooksServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -41,10 +41,10 @@ class OfficesServiceProvider extends ServiceProvider {
 	protected function registerConfig()
 	{
 		$this->publishes([
-		    __DIR__.'/../Config/config.php' => config_path('offices.php'),
+		    __DIR__.'/../Config/config.php' => config_path('books.php'),
 		]);
 		$this->mergeConfigFrom(
-		    __DIR__.'/../Config/config.php', 'offices'
+		    __DIR__.'/../Config/config.php', 'books'
 		);
 	}
 
@@ -55,7 +55,7 @@ class OfficesServiceProvider extends ServiceProvider {
 	 */
 	public function registerViews()
 	{
-		$viewPath = base_path('resources/views/modules/offices');
+		$viewPath = base_path('resources/views/modules/books');
 
 		$sourcePath = __DIR__.'/../Resources/views';
 
@@ -64,8 +64,8 @@ class OfficesServiceProvider extends ServiceProvider {
 		]);
 
 		$this->loadViewsFrom(array_merge(array_map(function ($path) {
-			return $path . '/modules/offices';
-		}, \Config::get('view.paths')), [$sourcePath]), 'offices');
+			return $path . '/modules/books';
+		}, \Config::get('view.paths')), [$sourcePath]), 'books');
 	}
 
 	/**
@@ -75,12 +75,12 @@ class OfficesServiceProvider extends ServiceProvider {
 	 */
 	public function registerTranslations()
 	{
-		$langPath = base_path('resources/lang/modules/offices');
+		$langPath = base_path('resources/lang/modules/books');
 
 		if (is_dir($langPath)) {
-			$this->loadTranslationsFrom($langPath, 'offices');
+			$this->loadTranslationsFrom($langPath, 'books');
 		} else {
-			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'offices');
+			$this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'books');
 		}
 	}
 
