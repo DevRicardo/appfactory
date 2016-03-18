@@ -687,7 +687,7 @@ class GeneratorController extends Controller {
     {
         $colunms = explode(",",$colunms);
 
-        $header = "<table class='responsive-table'>
+        $header = "<table class='responsive-table bordered striped hoverable'>
         <thead><tr><th data-field='id'>#</th>";
         foreach ($colunms as $value) {
             # code...
@@ -708,7 +708,45 @@ class GeneratorController extends Controller {
             $body .= "<td data-field='".$value."'>{!! \$".$this->singularize($table)."->".str_replace("'","",$value)." !!}</th>";
             }
         }
-        $body .="</tr>";        
+        $body .="
+        <td>
+
+            <!-- Dropdown Trigger -->
+              <a class='dropdown-button btn' href='#' data-activates='dropdown{!! \$count !!}'>    
+                  <i class='material-icons tyni left'>dashboard</i> 
+                  Actions 
+              </a>
+
+              <!-- Dropdown Structure -->
+              <ul id='dropdown{!! \$count !!}' class='dropdown-content'>
+                <li>
+                  <a data-action='edit' href='#' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
+                    <i  class='material-icons tyni left'>create</i>  
+                    Edit
+                  </a>
+                </li>
+
+                <li>
+                  <a href='#' data-action='show' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
+                    <i class='material-icons tyni left'>add</i> 
+                    Show   
+                  </a>
+                </li>
+
+                <li>
+                  <a  data-action='delete' href='#' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
+                    <i class='material-icons tyni left'>delete</i> 
+                    Delete   
+                  </a>
+                </li>
+              </ul>  
+        </td>
+
+
+
+        </tr>"; 
+
+
         
         
         $body .= "
