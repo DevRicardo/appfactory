@@ -4,5 +4,5 @@
 
     </div>
     <div>
-        {!! _table_->appends(['sort' => 'votes'])->links() !!}  
+        {!! $_table_->appends(['sort' => 'votes'])->links() !!}  
     </div>

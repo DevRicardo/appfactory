@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Create$_model_plural_$Table extends Migration {
+class CreateBooksTable extends Migration {
 
 
     use SoftDeletes;
@@ -16,11 +16,14 @@ class Create$_model_plural_$Table extends Migration {
      */
     public function up()
     {
-        Schema::create('$_table_$', function(Blueprint $table)
+        Schema::create('books', function(Blueprint $table)
         {
             $table->increments('id');
 
-            $_fields_db_migrate_$
+            $table->string('titulo','3');
+$table->integer('autor');
+$table->integer('etert');
+
 
             $table->timestamps();
             $table->softDeletes();
@@ -34,7 +37,7 @@ class Create$_model_plural_$Table extends Migration {
      */
     public function down()
     {
-        Schema::drop('$_table_$');
+        Schema::drop('books');
     }
 
 }

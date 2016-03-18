@@ -27,4 +27,5 @@ Route::group(['middleware' => 'web', 'prefix' => 'generator', 'namespace' => 'Mo
      Route::get('/createjs', 'GeneratorController@createjs');
      
      Route::get('/createview', 'GeneratorController@createview');
+     Route::get('/createmigrate', 'GeneratorController@createmigrate');
 });

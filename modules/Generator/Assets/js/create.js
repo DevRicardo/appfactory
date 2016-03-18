@@ -285,7 +285,7 @@ function addValueModalAttr () {
 
 
 
-       function createjs(project,nametable){
+   function createjs(project,nametable){
 
        var response = HelperServerPetition.sendBasic(
                     {
@@ -307,11 +307,32 @@ function addValueModalAttr () {
 
 
 
-          function createview(project,nametable){
+    function createview(project,nametable){
 
        var response = HelperServerPetition.sendBasic(
                     {
                          url:  baseUrl()+'/generator/createview',
+                        type:  'GET',
+                        data:  'id='+project+"&name="+nametable                                  
+                    }
+                );
+        response.done(function(data){                    
+            // agrega el componente que retorna la peticion 
+            // al elemento que se pasa como parametro
+
+           $(".progres_create").append(data.result);
+           createmigrate(project,nametable)
+
+        })  
+   }
+
+
+
+    function createmigrate(project,nametable){
+
+       var response = HelperServerPetition.sendBasic(
+                    {
+                         url:  baseUrl()+'/generator/createmigrate',
                         type:  'GET',
                         data:  'id='+project+"&name="+nametable                                  
                     }

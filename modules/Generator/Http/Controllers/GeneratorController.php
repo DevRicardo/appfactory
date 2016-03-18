@@ -391,7 +391,7 @@ class GeneratorController extends Controller {
         $this->constant = $this->generateConstant($request);
          
         $this->constant['_fields_'] =  $this->getFieldDbAll($request->id, $request->name);
-        $this->constant['_list_'] = $this->getTable($this->getFieldDb($request->id, $request->name));
+        $this->constant['_list_'] = $this->getTable($request->name, $this->getFieldDb($request->id, $request->name));
 
         
        
@@ -451,7 +451,47 @@ class GeneratorController extends Controller {
     }
 
 
+    public function createmigrate(Request $request)
+    {
+        $dir_module = $this->base_dir."".$request->id;
+        $this->constant = $this->generateConstant($request);
+        $this->constant['_migrate_'] = $this->getFieldMigrate($request->id, $request->name);
 
+        $migratelactual = $dir_module."/".ucwords($request->name)."/Database/Migrations/2016_02_02_133951_create_projects_table.php";
+        $newmigrate = $dir_module."/".ucwords($request->name)."/Database/Migrations/".date("Y")."_".date("m")."_".date("d")."_".rand(10000,99999)."_create_".$this->constant['_table_']."_table.php";
+
+        
+
+         // renombrando repositirio
+        rename($migratelactual, $newmigrate);
+
+        $path_to_file = $newmigrate;
+        $file_contents = file_get_contents($path_to_file);
+        
+
+        foreach ($this->constant as $key => $value) {
+            # code...
+            $file_contents = str_replace(''.$key.'',''.$value.'',$file_contents);
+            //echo $key."<br>";
+        }        
+
+        file_put_contents($path_to_file,$file_contents);
+
+        if(is_file($newmigrate))
+        {
+            return json_encode(["result"=>"<p>Crenado Migraciones<i class='green-text small material-icons'>done</i></p>"]);
+        }else
+        {
+            return json_encode(["result"=>"<p>Creando Migraciones <i class='red-text  small material-icons'>report_problem</i></p>"]);
+        }
+    }
+
+
+/**************************************************************
+*                                                             *
+*                 ----------------------------                *
+*                                                             *
+**************************************************************/
 
 
 
@@ -515,6 +555,31 @@ class GeneratorController extends Controller {
         foreach ($field->get() as $value) {
             # code
             $array .= "'".$value->name."',";
+        }
+        return $array;
+
+    }
+
+
+
+        public function getFieldMigrate($project, $table){
+
+        $array = "";
+        //$field = Field::where('table_id',$idtable)->select("");
+        $field = DB::table('projects')
+        ->join('tables','projects.id','=','tables.project_id')
+        ->join('fields','tables.id','=','fields.table_id')
+        ->select('*')
+        ->where('tables.name','=',$table);  
+        
+        foreach ($field->get() as $value) {
+            # code
+            if($value->type == "integer"){
+               $array .= "\$table->".$value->type."('".$value->name."');"."\n";
+            }else{
+               $array .= "\$table->".$value->type."('".$value->name."','".$value->length."');"."\n";
+            }
+            
         }
         return $array;
 
@@ -618,26 +683,43 @@ class GeneratorController extends Controller {
                 </div>";
     }
 
-    public function getTable($colunms)
+    public function getTable($table, $colunms)
     {
         $colunms = explode(",",$colunms);
 
         $header = "<table class='responsive-table'>
         <thead><tr><th data-field='id'>#</th>";
-        foreach ($colunms as $key => $value) {
+        foreach ($colunms as $value) {
             # code...
-            $header .= "<th data-field='".$value."'>".ucwords($value)."</th>";
+            $header .= "<th data-field='".$value."'>".ucwords(str_replace("'","",$value))."</th>";
         }         
         $header .= "</tr></thead>";
 
 
 
         $body = "<tbody>
+        <?php \$count = 1;?>
+        @foreach (\$".$table." as \$key => \$".$this->singularize($table).")";
+        $body .="<tr>
+           <td>{!! \$count !!}</td>   
+        "; 
+        foreach ($colunms as $value) {
+            if(!empty($value)){
+            $body .= "<td data-field='".$value."'>{!! \$".$this->singularize($table)."->".str_replace("'","",$value)." !!}</th>";
+            }
+        }
+        $body .="</tr>";        
         
+        
+        $body .= "
+        <?php \$count++;?>
+        @endforeach
         </tbody>";
 
 
-        $end = "</table> ";
+        $end = "
+         
+        </table> ";
 
         return $header.$body.$end;
     }
