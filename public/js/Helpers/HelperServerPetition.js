@@ -59,9 +59,11 @@ var HelperServerPetition = {
     actionButtonSubmit: function(action){        
         // recorre el formulario buscando los imput de tipo submit y los inhabilita        
         HelperServerPetition.objForm.find('input[type="submit"]').each(function(){
+
             if(action == "show"){
                 $(this).removeAttr('disabled');
             }else{
+                
                 if(action == "hidden"){                    
                   $(this).attr('disabled','disabled');                    
                 }

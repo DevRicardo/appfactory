@@ -142,6 +142,7 @@ class GeneratorController extends Controller {
     {
     	$dir_module = $this->base_dir."".$request->id;
     	$this->constant = $this->generateConstant($request);
+        $this->constant['_rules_'] = $this->getRules( $request->id,$request->name);
 
     	$createRecuestActual = $dir_module."/".ucwords($request->name)."/Http/Requests/CreateProjectsRequest.php";
     	$newRecuestCreate = $dir_module."/".ucwords($request->name)."/Http/Requests/Create".$this->constant['_model_plural_']."Request.php";
@@ -399,6 +400,7 @@ class GeneratorController extends Controller {
         $indexActual = $dir_module."/".ucwords($request->name)."/Resources/views/index.blade.php";
         $createActual = $dir_module."/".ucwords($request->name)."/Resources/views/create.blade.php";
         $editActual = $dir_module."/".ucwords($request->name)."/Resources/views/edit.blade.php";
+        $showActual = $dir_module."/".ucwords($request->name)."/Resources/views/show.blade.php";
         $fieldsActual = $dir_module."/".ucwords($request->name)."/Resources/views/fields.blade.php";
         $scriptActual = $dir_module."/".ucwords($request->name)."/Resources/views/partial/script.blade.php";
         $listActual = $dir_module."/".ucwords($request->name)."/Resources/views/list.blade.php";
@@ -412,6 +414,7 @@ class GeneratorController extends Controller {
         $path_to_file_script = $scriptActual;
         $path_to_file_field = $fieldsActual;
         $path_to_file_list = $listActual;
+        $path_to_file_show = $showActual;
 
         $file_contents_index = file_get_contents($path_to_file_index);
         $file_contents_create = file_get_contents($path_to_file_create);
@@ -419,6 +422,7 @@ class GeneratorController extends Controller {
         $file_contents_field = file_get_contents($path_to_file_field);
         $file_contents_script = file_get_contents($path_to_file_script);
         $file_contents_list = file_get_contents($path_to_file_list);
+        $file_contents_show = file_get_contents($path_to_file_show);
         
 
         foreach ($this->constant as $key => $value) {
@@ -428,7 +432,8 @@ class GeneratorController extends Controller {
             $file_contents_edit = str_replace(''.$key.'',''.$value.'',$file_contents_edit);
             $file_contents_field = str_replace(''.$key.'',''.$value.'',$file_contents_field);
             $file_contents_script = str_replace(''.$key.'',''.$value.'',$file_contents_script);
-             $file_contents_list = str_replace(''.$key.'',''.$value.'',$file_contents_list);
+            $file_contents_list = str_replace(''.$key.'',''.$value.'',$file_contents_list);
+            $file_contents_show = str_replace(''.$key.'',''.$value.'',$file_contents_show);
             //echo $key."<br>";
         }        
 
@@ -438,6 +443,7 @@ class GeneratorController extends Controller {
         file_put_contents($path_to_file_field,$file_contents_field);
         file_put_contents($path_to_file_script,$file_contents_script);
         file_put_contents($path_to_file_list,$file_contents_list);
+        file_put_contents($path_to_file_show,$file_contents_show);
 
         if(is_file($indexActual) && is_file($createActual) && is_file($editActual) && is_file($scriptActual))
         {
@@ -485,6 +491,10 @@ class GeneratorController extends Controller {
             return json_encode(["result"=>"<p>Creando Migraciones <i class='red-text  small material-icons'>report_problem</i></p>"]);
         }
     }
+
+
+
+
 
 
 /**************************************************************
@@ -583,6 +593,25 @@ class GeneratorController extends Controller {
         }
         return $array;
 
+    }
+
+
+    public function getRules($project, $table)
+    {
+         $array = "";
+        //$field = Field::where('table_id',$idtable)->select("");
+        $field = DB::table('projects')
+        ->join('tables','projects.id','=','tables.project_id')
+        ->join('fields','tables.id','=','fields.table_id')
+        ->select('*')
+        ->where('tables.name','=',$table);  
+        
+        foreach ($field->get() as $value) {
+            # code
+            $array .= "'".$value->name."'=>'".$value->validations."',";
+            
+        }
+        return $array;
     }
 
 
@@ -687,7 +716,7 @@ class GeneratorController extends Controller {
     {
         $colunms = explode(",",$colunms);
 
-        $header = "<table class='responsive-table bordered striped hoverable'>
+        $header = "<table class='bordered striped'>
         <thead><tr><th data-field='id'>#</th>";
         foreach ($colunms as $value) {
             # code...
@@ -712,31 +741,31 @@ class GeneratorController extends Controller {
         <td>
 
             <!-- Dropdown Trigger -->
-              <a class='dropdown-button btn' href='#' data-activates='dropdown{!! \$count !!}'>    
-                  <i class='material-icons tyni left'>dashboard</i> 
-                  Actions 
+              <a class='dropdown-button  right' href='#' data-beloworigin='true' data-activates='dropdown{!! \$count !!}'>    
+                  <i class='material-icons text-black tyni '>more_vert</i>
+                 
               </a>
 
               <!-- Dropdown Structure -->
-              <ul id='dropdown{!! \$count !!}' class='dropdown-content'>
+              <ul  id='dropdown{!! \$count !!}' class='dropdown-content right'>
                 <li>
-                  <a data-action='edit' href='#' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
+                  <a data-action='edit' data-model='".$table."' href='#' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
                     <i  class='material-icons tyni left'>create</i>  
                     Edit
                   </a>
                 </li>
 
                 <li>
-                  <a href='#' data-action='show' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
-                    <i class='material-icons tyni left'>add</i> 
+                  <a href='#' data-action='show' data-model='".$table."' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
+                    <i class='material-icons tyni left'>visibility</i> 
                     Show   
                   </a>
                 </li>
 
                 <li>
-                  <a  data-action='delete' href='#' onclick='redirect(this,{!! \$".$this->singularize($table)."->id !!})'>
-                    <i class='material-icons tyni left'>delete</i> 
-                    Delete   
+                  <a  data-action='delete' class='delete' data-id='{!! \$".$this->singularize($table)."->id !!}' data-model='".$table."' href='#' >
+                    <i class='material-icons tyni left delete'>delete</i>
+                    Delete 
                   </a>
                 </li>
               </ul>  

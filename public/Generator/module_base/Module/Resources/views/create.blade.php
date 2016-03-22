@@ -9,14 +9,14 @@
 <div class="col s12 m12 l12">
 <br>
   <div class="chip teal lighten-4 z-depth-1 hoverable">
-        <a href="{!! url('/$_table_$') !!}">
-            Projects 
+        <a href="{!! url('/_table_') !!}">
+            _table_ 
             <i class="material-icons">keyboard_arrow_right</i>
         </a>
         
   </div>
   <div class="chip teal lighten-4 z-depth-1">
-       <a href="{!! url('/$_table_$/create') !!}">
+       <a href="{!! url('/_table_/create') !!}">
            Create 
        </a>
        
@@ -31,13 +31,13 @@
     
   <div class="row">
     
-    {!! Form::open(['url'=>'$_table_$', 'method'=>'POST', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 create','enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['url'=>'_table_', 'method'=>'POST', 'class' => 'col s12 card-panel  create','enctype'=>'multipart/form-data']) !!}
     
     <blockquote>
-      <h5>Create new $_model_$</h5>
+      <h5>Create new _model_</h5>
     </blockquote>
 
-    @include('$_table_$::fields')
+    @include('_table_::fields')
    
 
     <div class="input-field col s6" style="margin-bottom: 18px;">
@@ -53,7 +53,7 @@
 
 @section('scripts')
 
-     @include('$_table_$::partial.script')
+     @include('_table_::partial.script')
 
 @stop
 

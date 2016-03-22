@@ -1,5 +1,5 @@
 {
-	"name": "pingpong-modules/$_table_$",
+	"name": "pingpong-modules/_table_",
 	"description": "",
 	"authors": [
 		{
@@ -9,7 +9,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"Modules\\$_model_plural_$\\": ""
+			"Modules\\_model_plural_\\": ""
 		}
 	}
 }

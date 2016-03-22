@@ -103,8 +103,8 @@ function addValueModalAttr () {
         response.done(function(data){                    
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
-
-           $(".progres_create").append(data.result);
+           progress_item = 0;
+           showProgress(data.result, '8.3');
             copyBaseModule(project,nametable); 
 
         }) 
@@ -125,7 +125,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
             createRepository(project,nametable);
  
         })  
@@ -146,7 +146,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
        
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createprovider(project,nametable)
            
 
@@ -169,7 +169,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createrequest(project,nametable);
 
         })  
@@ -190,7 +190,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createroutes(project,nametable)
 
         })  
@@ -210,7 +210,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createcontoller(project,nametable)
            
 
@@ -232,7 +232,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createmodel(project,nametable)
            
 
@@ -254,7 +254,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createconfig(project,nametable)
            
 
@@ -277,7 +277,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createjs(project,nametable)
 
         })  
@@ -298,7 +298,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createview(project,nametable)
            
 
@@ -320,7 +320,7 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
            createmigrate(project,nametable)
 
         })  
@@ -341,10 +341,21 @@ function addValueModalAttr () {
             // agrega el componente que retorna la peticion 
             // al elemento que se pasa como parametro
 
-           $(".progres_create").append(data.result);
+           showProgress(data.result, '8.3');
+          
            
 
         })  
+   }
+
+   var progress_item = 0;
+   function showProgress(item, progres){
+    
+    progress_item = progress_item + parseFloat(progres);
+    $(".display_progress").css('display','block');
+    $(".determinate").css('width', progress_item+'%');
+    $(".progres_create").html(item);
+
    }
 
 

@@ -63,6 +63,7 @@ function loadData(config)
     $.extend(defaults, config);
     var element = defaults.element+defaults.route;
 
+
     if($(element).length > 0)
     {        
         var objElement = $(element);
@@ -102,8 +103,8 @@ function eventListenPaginate()
 
         var npage = $(this).attr('href').split("page=")[1];
         var dataUrl = $(this).attr('href').split("/");
-        var controller = dataUrl[4];
-
+        var controller = dataUrl[3];
+        
         
         loadData({
             route:   controller,
