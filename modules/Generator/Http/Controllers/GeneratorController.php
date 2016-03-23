@@ -645,7 +645,7 @@ class GeneratorController extends Controller {
 
             if($campo == "select"){
 
-                $array .= $this->getSelect($value->name, $type,$value->attributes, $value->validations);
+                $array .= $this->getSelect($value->name,$value->attributes, $value->validations);
 
             }
 

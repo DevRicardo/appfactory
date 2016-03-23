@@ -1,0 +1,15 @@
+{
+    "name": "Ponds",
+    "alias": "ponds",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Ponds\\Providers\\PondsServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}
