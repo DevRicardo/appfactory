@@ -5,25 +5,30 @@ use Modules\Ponds\Http\Requests\CreatePondsRequest;
 use Modules\Ponds\Http\Requests\UpdatePondsRequest;
 use Modules\Ponds\Repositories\PondRepository;
 use Modules\Phases\Repositories\PhaseRepository;
+use Modules\Crops\Repositories\CropRepository;
 use Modules\Ponds\Entities\Pond;
 use Modules\Phases\Entities\Phase;
+use Modules\Crops\Entities\Crops;
 use Illuminate\Http\Request;
 use App\Tools\Messages;
 use App\Tools\Files;
 use Response;
 use DB;
+use Input;
 
 class PondsController extends Controller {
 
     private $pondrepository;
     private $phaserepository;
+    private $cropsrepository;
     private $message;
     private $files;
 
-  public function __construct(PondRepository $pondRepo, PhaseRepository $phaserepository, Messages $message, Files $file)
+  public function __construct(CropRepository $cropsrepository, PondRepository $pondRepo, PhaseRepository $phaserepository, Messages $message, Files $file)
   {
         $this->pondrepository = $pondRepo;
         $this->phaserepository = $phaserepository;
+        $this->cropsrepository = $cropsrepository;
         $this->message = $message;
         $this->files = $file;
   }
@@ -33,8 +38,12 @@ class PondsController extends Controller {
     */
   public function index()
   {
-       
+       $phases = $this->phaserepository->contentSelect(); 
+       $crops = $this->cropsrepository->contentSelect(); 
        $view = view('ponds::index');
+
+       $view->with("phases",$phases);
+       $view->with("crops",$crops); 
 
         return $view;     
   }
@@ -42,11 +51,19 @@ class PondsController extends Controller {
 
     public function listElements(Request $request)
     {
+        $pond = null;  
+        $params = count($request->all());
+        if($params  > 1 ){
+            $ponds = $this->pondrepository->search($request->all()); 
+        }else{
+            $ponds = $this->pondrepository; 
+        }
+
+                    
         
-        $ponds = $this->pondrepository; 
         $view = view('ponds::list');
         //params at view       
-        
+         
         $result['vista'] = $view->with("ponds",$ponds->paginate(4))->render();
 
         return response()->json($result); 

@@ -21,7 +21,7 @@ class PhaseRepository extends Repository
     public function contentSelect()
     {
     	$phases = Phase::all();
-    	$array_select = [];
+    	$array_select[] = "Seleccione";
 
     	foreach ($phases as $key => $value) {
     		# code...

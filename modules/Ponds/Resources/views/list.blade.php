@@ -1,11 +1,27 @@
    <div class="row">
 
+
     <table class='bordered striped'>
-        <thead><tr><th data-field='id'>#</th><th data-field=''phase_id''>Fase</th><th data-field=''siembra''>Siembra</th><th data-field=''maximo''>Densidad minima</th><th data-field=''minimo''>Densidad maxima</th><th data-field=''></th></tr></thead><tbody>
+        <thead>
+            <tr>
+                <th data-field='id'>#</th>
+                <th data-field=''crop_id''>Cultivo</th>
+                <th data-field=''phase_id''>Fase</th>
+                <th data-field=''siembra''>Siembra</th>
+                <th data-field=''maximo''>Densidad minima(ind/m<sup>2</sup>)</th>
+                <th data-field=''minimo''>Densidad maxima(ind/m<sup>2</sup>)</th>
+                <th data-field=''></th>
+            </tr>
+        </thead>
+        <tbody>
         <?php $count = 1;?>
         @foreach ($ponds as $key => $pond)<tr>
-           <td>{!! $count !!}</td>   
-        <td data-field=''phase_id''>{!! $pond->phases()->first()->name !!}</th><td data-field=''siembra''>{!! $pond->siembra !!}</th><td data-field=''maximo''>{!! $pond->minimo !!}</th><td data-field=''minimo''>{!! $pond->maximo !!}</th>
+           <td>{!! $count !!}</td>  
+           <td data-field=''phase_id''>{!! $pond->crops()->first()->name !!}</td>  
+           <td data-field=''phase_id''>{!! $pond->phases()->first()->name !!}</td> 
+           <td data-field=''siembra''>{!! $pond->siembra !!}</td>
+           <td data-field=''maximo''>{!! $pond->minimo !!}</td>
+           <td data-field=''minimo''>{!! $pond->maximo !!}</td>
         <td>
 
             <!-- Dropdown Trigger -->
@@ -50,7 +66,7 @@
 
     </div>
     <div>
-        {!! $ponds->appends(['sort' => 'votes'])->links() !!}  
+        {!! $ponds->appends(Request::all())->links() !!}  
     </div>
     <script type="text/javascript">
       dropdown()

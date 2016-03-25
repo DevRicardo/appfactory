@@ -14,7 +14,7 @@ class Pond extends Model {
 
     protected $fillable = [
     
-        'phase_id','siembra','maximo','minimo',
+        'crop_id','phase_id','siembra','maximo','minimo',
 
     ];
 
@@ -25,11 +25,11 @@ class Pond extends Model {
     {
     	return $this->belongsTo('Modules\Phases\Entities\Phase','phase_id');
     }
-    /*
-    public function states()
+    
+    public function crops()
     {
-    	return $this->belongsToMany('Modules\Projects\Entities\State')->withPivot('state_start', 'state_end');
+    	return $this->belongsTo('Modules\Crops\Entities\Crop','crop_id');
     }
-    */
+    
 
 }

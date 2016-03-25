@@ -17,5 +17,20 @@ class CropRepository extends Repository
     	return 'Modules\Crops\Entities\Crop';
     }
 
+
+
+    public function contentSelect()
+    {
+    	$crops = Crop::all();
+    	$array_select[] = "Seleccione";
+
+    	foreach ($crops as $key => $value) {
+    		# code...
+    		$array_select[$value->id] = $value->name;
+    	}
+
+    	return $array_select;
+    }
+
     
 }

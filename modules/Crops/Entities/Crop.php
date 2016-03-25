@@ -19,13 +19,14 @@ class Crop extends Model {
     ];
 
    
-    /*
+   
 
-    public function categorie()
+    public function ponds()
     {
-    	return $this->belongsTo('Modules\Projects\Entities\Categorie');
+    	return $this->hasMany('Modules\Ponds\Entities\Pond');
     }
 
+    /*
     public function states()
     {
     	return $this->belongsToMany('Modules\Projects\Entities\State')->withPivot('state_start', 'state_end');

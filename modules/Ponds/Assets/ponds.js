@@ -47,6 +47,8 @@ loadData({
 	callback:eventDelete
 });
 
+eventSearch ();
+
 
 
 

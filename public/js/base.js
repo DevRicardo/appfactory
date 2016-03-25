@@ -57,6 +57,7 @@ function loadData(config)
         route:'',
         nextpage:'',
         element:'.list_',
+        'data':'',
         callback:defaultLoad
     }
 
@@ -75,7 +76,7 @@ function loadData(config)
         var request = HelperServerPetition.sendBasic({
                                    url:  baseUrl()+'/'+defaults.route+'/list'+page,
                                    type:  'GET',
-                                   data:'' 
+                                   data:defaults.data 
                       }, objElement);
 
         request.done(function(msj){
@@ -100,7 +101,7 @@ function eventListenPaginate()
     $(document).on('click', '.pagination a', function (e) {
         e.preventDefault();
 
-
+        var params = $(this).attr('href').split("?")[1];
         var npage = $(this).attr('href').split("page=")[1];
         var dataUrl = $(this).attr('href').split("/");
         var controller = dataUrl[3];
@@ -109,6 +110,7 @@ function eventListenPaginate()
         loadData({
             route:   controller,
             nextpage:npage,
+            data:params,
             callback:eventDelete
         });
         

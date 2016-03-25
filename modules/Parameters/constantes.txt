@@ -1,0 +1,8 @@
+'$_table_$' => ''
+'$_model_plural_$' => ''
+'$_object_plural_$' => ''
+'$_model_$' => 'ucwords'
+'$_object_$' => ''
+'$_rules_$' = ''
+'$_fields_db_$'
+'$_fields_db_migrate_$'
