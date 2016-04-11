@@ -691,6 +691,7 @@ class GeneratorController extends Controller {
         <thead><tr><th data-field='id'>#</th>";
         foreach ($colunms as $value) {
             # code...
+            $value = str_replace("'", "", $value);
             $header .= "<th data-field='".$value."'>".ucwords(str_replace("'","",$value))."</th>";
         }         
         $header .= "</tr></thead>";
