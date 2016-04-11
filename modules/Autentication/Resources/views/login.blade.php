@@ -12,7 +12,7 @@
           
           <div class="row">
             <div class="input-field col s12">
-              <input id="email" name="email" type="email" value="jarl_47@hotmail.com" class="validate" value="{{ old('email') }}" autocomplete="off" >
+              <input id="email" name="email" type="email" value="jarl1109@gmail.com" class="validate" value="{{ old('email') }}" autocomplete="off" >
               <label for="email">Email</label>
               @if ($errors->has('email'))
                   <span class="help-block">
@@ -21,11 +21,11 @@
               @endif
             </div>
           </div>
-
+         
           <div class="row">
             <div class="input-field col s12">
-              <input id="password" name="password" type="password" value="1234567" class="validate">
-              <label for="password">Password</label>
+              <input id="password" name="password" type="password" value="monteria1109" class="validate">
+              <label for="password">Clave</label>
               @if ($errors->has('password'))
                 <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
@@ -38,16 +38,16 @@
             <div class="col s12">
                   
                 <input type="checkbox" name="remember" id="remember"> 
-                <label for="remember">Remember Me</label>
+                <label for="remember">Recordar</label>
                          
             </div>
           </div>
 
            <button type="submit" class="btn btn-primary ">
-               <i class="fa fa-btn fa-sign-in"></i>Login
+               <i class="fa fa-btn fa-sign-in"></i>Ingresa
            </button>
 
-           <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+           <!-- <a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>-->
         </form>
       </div>
 </div>

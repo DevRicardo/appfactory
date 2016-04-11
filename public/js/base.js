@@ -57,14 +57,17 @@ function loadData(config)
         route:'',
         nextpage:'',
         element:'.list_',
+        'data':'',
         callback:defaultLoad
     }
 
     $.extend(defaults, config);
     var element = defaults.element+defaults.route;
-
-    if($(element).length > 0)
-    {        
+    
+    alert(defaults.route);
+    //if($(element).length > 0)
+    //{      
+        alert(element.length );  
         var objElement = $(element);
         var page = "";
         if(typeof defaults.nextpage != "undefined"){
@@ -74,7 +77,7 @@ function loadData(config)
         var request = HelperServerPetition.sendBasic({
                                    url:  baseUrl()+'/'+defaults.route+'/list'+page,
                                    type:  'GET',
-                                   data:'' 
+                                   data:defaults.data 
                       }, objElement);
 
         request.done(function(msj){
@@ -86,7 +89,7 @@ function loadData(config)
 
         });
 
-    }
+    //}
 }
 
 function defaultLoad()
@@ -98,16 +101,20 @@ function eventListenPaginate()
 {
     $(document).on('click', '.pagination a', function (e) {
         e.preventDefault();
-
-
+        
+        var params = $(this).attr('href').split("?")[1];
         var npage = $(this).attr('href').split("page=")[1];
         var dataUrl = $(this).attr('href').split("/");
+        /*
+        * Verificar este parametro dependiendo de la url del proyecto
+        */
         var controller = dataUrl[4];
-
+         
         
         loadData({
-            route:   controller,
+            route:controller,
             nextpage:npage,
+            data:params,
             callback:eventDelete
         });
         

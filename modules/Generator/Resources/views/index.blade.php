@@ -115,10 +115,13 @@
           
         </tbody>
       </table>
-
-      <div class="progres_create col m12 s12 l12" >
-        
+      <div class="display_progress" style="display: none;">
+        <div class="progress">
+        <div class="determinate" style="width: 0%"></div>
+        </div>
+        <label class="progres_create">.....</label>
       </div>
+      
     </div> 
    
 

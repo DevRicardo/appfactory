@@ -1,0 +1,15 @@
+{
+    "name": "Parameters",
+    "alias": "parameters",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Parameters\\Providers\\ParametersServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "start.php"
+    ]
+}

@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD:modules/Books/composer.json
 	"name": "pingpong-modules/books",
+=======
+	"name": "pingpong-modules/offices",
+>>>>>>> appf/ts1:public/Generator/55/Offices/composer.json
 	"description": "",
 	"authors": [
 		{
@@ -9,7 +13,11 @@
 	],
 	"autoload": {
 		"psr-4": {
+<<<<<<< HEAD:modules/Books/composer.json
 			"Modules\\Books\\": ""
+=======
+			"Modules\\Offices\\": ""
+>>>>>>> appf/ts1:public/Generator/55/Offices/composer.json
 		}
 	}
 }

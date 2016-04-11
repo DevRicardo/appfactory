@@ -1,12 +1,21 @@
 {
+<<<<<<< HEAD:modules/Books/module.json
     "name": "Books",
     "alias": "books",
+=======
+    "name": "Offices",
+    "alias": "offices",
+>>>>>>> appf/ts1:public/Generator/55/Offices/module.json
     "description": "",
     "keywords": [],
     "active": 1,
     "order": 0,
     "providers": [
+<<<<<<< HEAD:modules/Books/module.json
         "Modules\\Books\\Providers\\BooksServiceProvider"
+=======
+        "Modules\\Offices\\Providers\\OfficesServiceProvider"
+>>>>>>> appf/ts1:public/Generator/55/Offices/module.json
     ],
     "aliases":{},
     "files": [

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>.:EP-001:.</title>
+    <title>.:SECCT:.</title>
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,10 +18,10 @@
 <body>
  <nav class="teal accent-4">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">EP-001</a>
+      <a href="#" class="brand-logo center">.:SECCT:.</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">Register</a></li>
-        <li><a href="badges.html">Contact</a></li>
+        <li><a href="{!! url('/autentication/register') !!}">Registrate</a></li>
+        <li><a href="{!! url('/autentication/login') !!}">iniciar sesión</a></li>
         
       </ul>
     </div>

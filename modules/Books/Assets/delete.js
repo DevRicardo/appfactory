@@ -26,7 +26,11 @@ function eventDelete()
 function destroy(id)
 {
     var response = HelperServerPetition.sendBasic({
+<<<<<<< HEAD:modules/Books/Assets/delete.js
 				    	url:'books/'+id,
+=======
+				    	url:'offices/'+id,
+>>>>>>> appf/ts1:public/Generator/55/Offices/Assets/delete.js
 				    	type:'DELETE',
 				    	data:''
                    });

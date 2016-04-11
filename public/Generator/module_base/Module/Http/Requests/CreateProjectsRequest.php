@@ -30,6 +30,10 @@ class Create_model_plural_Request extends FormRequest {
 	public function rules()
 	{
 		return [
+<<<<<<< HEAD
+=======
+
+>>>>>>> appf/ts1
 		    _rules_
         ];
 	} 

@@ -10,7 +10,11 @@
 <br>
   <div class="chip teal lighten-4 z-depth-1 hoverable">
         <a href="{!! url('/_table_') !!}">
+<<<<<<< HEAD
             Projects 
+=======
+            _model_plural_ 
+>>>>>>> appf/ts1
             <i class="material-icons">keyboard_arrow_right</i>
         </a>
         
@@ -31,8 +35,15 @@
     
   <div class="row">
     
+<<<<<<< HEAD
     {!! Form::model($_object_, ['url'=>'_table_/'.$_object_->id, 'method'=>'PUT', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 update','name'=>'update__table_','enctype'=>'multipart/form-data']) !!}
     
+=======
+    {!! Form::model($_object_, ['url'=>'_table_/'.$_object_->id, 'method'=>'PUT', 'class' => 'col s12 card-panel update','name'=>'update__table_','enctype'=>'multipart/form-data']) !!}
+     <blockquote>
+      <h5>Ediar new _model_</h5>
+    </blockquote>
+>>>>>>> appf/ts1
    
     @include('_table_::fields')
    

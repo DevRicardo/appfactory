@@ -47,7 +47,7 @@ function eventCreate ()
  
 var successCreate = function(data)
 {
-	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
+	HelperServerPetition.actionButtonSubmit('show');
 	HelperServerPetition.actionPreloader('hidden','indicador_carga');
 	HelperMessage.displayNotyOn(data);
 	if(data.type == "success")
@@ -67,7 +67,7 @@ var successCreate = function(data)
 var errorCreate = function(data, status, objXHR)
 {
 	// Proceso fallido ...
-	HelperServerPetition.actionButtonSubmit(HelperServerPetition.objForm, 'show');
+	HelperServerPetition.actionButtonSubmit('show');
 	HelperServerPetition.actionPreloader('hidden','indicador_carga');
 }
 

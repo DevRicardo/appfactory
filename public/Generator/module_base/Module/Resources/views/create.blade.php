@@ -31,7 +31,11 @@
     
   <div class="row">
     
+<<<<<<< HEAD
     {!! Form::open(['url'=>'_table_', 'method'=>'POST', 'class' => 'col s12 card-panel z-depth-1 grey lighten-3 create','enctype'=>'multipart/form-data']) !!}
+=======
+    {!! Form::open(['url'=>'_table_', 'method'=>'POST', 'class' => 'col s12 card-panel  create','enctype'=>'multipart/form-data']) !!}
+>>>>>>> appf/ts1
     
     <blockquote>
       <h5>Create new _model_</h5>

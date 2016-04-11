@@ -71,11 +71,30 @@ class _model_plural_Controller extends Controller {
   {
 
         
-        $project = $this->projectrepository->find($id);
+        $project = $this->_object_repository->find($id);
 
         $view = view('_object_plural_::edit');
         //params at view
         $view->with('_object_', $project);
+<<<<<<< HEAD
+=======
+
+        return $view;
+  }
+
+      /**
+    * Muestra el formulario para editar proyecto
+    */
+  public function show($id)
+  {
+
+        
+        $project = $this->_object_repository->find($id);
+
+        $view = view('_object_plural_::show');
+        //params at view
+        $view->with('_object_', $project);
+>>>>>>> appf/ts1
 
         return $view;
   }

@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 trait RegistersUsers
 {
@@ -60,7 +61,9 @@ trait RegistersUsers
             );
         }
 
-        Auth::guard($this->getGuard())->login($this->create($request->all()));
+
+
+        Auth::guard($this->getGuard())->login(User::create($request->all()));
 
         return redirect($this->redirectPath());
     }

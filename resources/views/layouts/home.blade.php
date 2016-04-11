@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>.:EP-001:.</title>
+    <title>.:SECCT:.</title>
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -37,7 +37,7 @@
  </ul>
   <nav class="teal accent-4">
     <div class="nav-wrapper">
-      <a href="#!" class="brand-logo">EP-001</a>
+      <a href="#!" class="brand-logo">.:SECCT:.</a>
      
       <form id="f_search" style="display: none;">
         <div class="input-field">
@@ -50,8 +50,8 @@
       <a href="#!" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down menu-large">
         <li>@yield('search')</li>        
-        <li><a href="{!! url('') !!}">Register</a></li>
-        <li><a href="{!! url('') !!}">Contact</a></li>
+        <li><a href="{!! url('') !!}">OPCION1</a></li>
+        <li><a href="{!! url('') !!}">OPCION2</a></li>
         <li><a class="dropdown-button" href="#!" data-activates="menu_personal">
         
         <div class="chip z-depth-1">

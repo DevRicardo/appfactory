@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,16 @@ class HomeController extends Controller
         /*$salida = shell_exec('php ../artisan module:make Automatico');
         $salida .= shell_exec("chmod 777 -R ../modules/Automatico/");
         return  "<pre>$salida</pre>";*/
-        return view("home");
+        $role = Auth::user()->role;
+
+        if($role == 'Usuario'){
+            return view("home");
+            return redirect();
+        }else{
+            return view("home");
+            return redirect();
+        }
+        
         
     }
 }
